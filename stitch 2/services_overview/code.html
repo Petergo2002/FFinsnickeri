@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="light" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#fe8983",
+              "surface-container-highest": "#dbe4e7",
+              "on-tertiary": "#faf8ff",
+              "on-error-container": "#752121",
+              "inverse-primary": "#d5e7fe",
+              "on-surface": "#2b3437",
+              "secondary": "#5c5f64",
+              "surface-variant": "#dbe4e7",
+              "on-tertiary-fixed": "#353b53",
+              "error": "#9f403d",
+              "surface-container-low": "#f1f4f6",
+              "error-dim": "#4e0309",
+              "surface-bright": "#f8f9fa",
+              "on-secondary": "#f7f9ff",
+              "background": "#f8f9fa",
+              "primary-fixed-dim": "#c4d6ed",
+              "secondary-container": "#e0e2e8",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e3e9ec",
+              "surface-tint": "#4f6073",
+              "primary-fixed": "#d2e4fb",
+              "on-secondary-fixed": "#3c4044",
+              "secondary-fixed": "#e0e2e8",
+              "surface-dim": "#d1dce0",
+              "on-tertiary-container": "#474d67",
+              "tertiary-fixed-dim": "#c8cdec",
+              "tertiary": "#585e78",
+              "surface-container": "#eaeff1",
+              "surface": "#f8f9fa",
+              "on-primary-container": "#425366",
+              "inverse-surface": "#0c0f10",
+              "tertiary-dim": "#4c526c",
+              "on-surface-variant": "#586064",
+              "primary-dim": "#435467",
+              "inverse-on-surface": "#9b9d9e",
+              "on-error": "#fff7f6",
+              "primary": "#4f6073",
+              "secondary-dim": "#505358",
+              "on-tertiary-fixed-variant": "#515771",
+              "on-background": "#2b3437",
+              "tertiary-container": "#d6dbfb",
+              "on-primary-fixed": "#304153",
+              "on-secondary-container": "#4f5257",
+              "outline-variant": "#abb3b7",
+              "on-primary": "#f5f8ff",
+              "tertiary-fixed": "#d6dbfb",
+              "outline": "#737c7f",
+              "on-primary-fixed-variant": "#4c5d70",
+              "primary-container": "#d2e4fb",
+              "secondary-fixed-dim": "#d2d4da",
+              "on-secondary-fixed-variant": "#595c61"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-rhythm-no-borders {
+            border: none !important;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-slate-200/20 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<a class="text-2xl font-bold tracking-tighter text-[#4f6073] uppercase font-headline" href="#">
+                Knallens Fastighetsservice
+            </a>
+<div class="hidden md:flex items-center gap-8 font-manrope text-lg font-semibold tracking-tight">
+<a class="text-slate-600 hover:text-[#4f6073] transition-colors" href="#">Hem</a>
+<a class="text-[#4f6073] border-b-2 border-[#4f6073] pb-1" href="#">Tjänster</a>
+<a class="text-slate-600 hover:text-[#4f6073] transition-colors" href="#">Om oss</a>
+<a class="text-slate-600 hover:text-[#4f6073] transition-colors" href="#">Referenser</a>
+<a class="text-slate-600 hover:text-[#4f6073] transition-colors" href="#">Felanmälan</a>
+</div>
+<div class="flex items-center">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-semibold scale-95 active:scale-90 duration-200 transition-all hover:bg-primary-dim shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                    Kontakta oss
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative bg-surface-container-low overflow-hidden py-24 md:py-32">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 items-center gap-12">
+<div class="md:col-span-7 z-10">
+<span class="inline-block text-primary font-headline font-bold text-xs tracking-[0.2em] uppercase mb-4">Vår Expertis</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-surface tracking-tighter leading-[0.95] mb-8">
+                        Våra Tjänster för <br/>
+<span class="text-primary-dim">Hållbara Fastigheter</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        Från daglig skötsel till avancerad teknisk förvaltning. Vi kombinerar hantverkskunnande med moderna lösningar för att bevara och öka värdet på din fastighet.
+                    </p>
+</div>
+<div class="md:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Professional property technician inspecting HVAC system in a clean modern utility room with soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbbYTS__0LNLveAOLu1X4qymKZ6h_qMkbK6sYCNdZ0-gacdgP5eEs-TPUVmYz-j5DPImAwOlRQJBc-Z8ceMzQ64wiukPE22WhD0Q77kReynYf8HKjY1zo_ybpC0vPj2QkQXCBjruGfVRfTEHtmtKQsV5gqJaPj_keuFOpqhcQpzVF17BYsgWIdcLnG180EjmPwgRlmpfR84w6X5duk2AgD0DbOERyqf4fMzfOegqJLKhH4VuqSOlFyFYKOD5YrzegBK9iL7qjPjek"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-primary text-on-primary p-8 rounded-xl shadow-xl hidden lg:block">
+<p class="font-headline font-bold text-4xl leading-tight">10+</p>
+<p class="text-sm font-medium opacity-80 uppercase tracking-wider">Specialområden</p>
+</div>
+</div>
+</div>
+<!-- Background element -->
+<div class="absolute top-0 right-0 w-1/3 h-full bg-surface-container-high -skew-x-12 translate-x-1/2 pointer-events-none"></div>
+</section>
+<!-- Status Ribbon (Signature Component) -->
+<div class="bg-tertiary-container text-on-tertiary-container py-3">
+<div class="max-w-7xl mx-auto px-6 flex items-center justify-center gap-4 text-sm font-semibold tracking-wide uppercase">
+<span class="material-symbols-outlined text-sm" data-icon="verified" data-weight="fill">verified</span>
+<span>Auktoriserad fastighetspartner för BRF &amp; Kommersiella lokaler</span>
+</div>
+</div>
+<!-- Services Grid -->
+<section class="py-24 md:py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="mb-20">
+<h2 class="text-4xl font-headline font-bold text-on-surface tracking-tight mb-4">Omfattande Förvaltning</h2>
+<p class="text-on-surface-variant max-w-2xl">Vi erbjuder en helhetslösning där varje detalj i fastighetens livscykel tas om hand med högsta precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of clean building entrance with modern architectural lines and polished stone flooring" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGfeGb8ti-7-Xw7BD_3WHDoe_snZTzGYbIvRYtFvw_kRKgux6fiMfv3Lef4me_9q8l7jJvwiTVeGAjdqXh-AbDDf7mcdl3tptoM4dlUmtGj2Km-OH2meMLrbtJls7qIugnmfMw-b3bj4lA9buXJJdqsVDew1c2v5O1F5DkEWFjJvZKFY1PdM-jWxW8ECZriRC0Xq27PK-qW6j1KmrJqnuS-og2IUoswUIVEVt5wWvZJseENezipx1D6k_ophcAhwQkEydr9dp6nyg"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Fastighetsskötsel</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Daglig tillsyn och underhåll som håller fastigheten i toppskick året runt.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 2 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern staircase with clean wooden steps and glass railings in a bright minimalist apartment building" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW1y_Vjo23bLs2sYjdN2mC2wiZ6ts-bbNIwH9jF704jwEZaW1LVW-QfpkAqErjCqfCNu4-mUfJ4Hujpl5eUC59zjY1_IzPXUNrYqS1eI4Bs4bFsr7BtHfjOfJYjeIHMhvzYI2M-0m4rSyRnYg_IrJCgU9ZzeycMyNZlgDJxIbJT53eHwne4UIxpeI_jqt2pBn9w8DCqYDYjpDrZ18Q8pKAVw-o3gDuYmMFfwyJHUjPv7lIlE-kxEJLerD87yHb4OLlAF4vHLpy82A"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Trappstädning</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Professionell städning som skapar välkomnande och hygieniska gemensamma ytor.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Lush green courtyard garden with neatly trimmed hedges and stone pathways at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-9gncyfmNoRxQn_81MIfo5q1uvmpsxaoJK0ZFTo1XzrpZXwXaYZwAzLWaQWOUXI8SYD6NN02SDkIVfPCcXZncVNOZp3WMsSJQhK9zolV1Eh7QLSyrYMHJraXkBt4micP6RlyzZdDhYPJ8y7JMKYAiaECeUFiuKGCAWoFRHlmfROMEm5lf1oedArmLNDCdL5XmzriVSRJ4GQHHED4tQKTY7iln8B-hfTGS_NWcy2GZ6MHPrzp5DPdPbSjjPzyXaV_yDsI2cA6_hU8"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Trädgårdsservice</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Expertis inom grönytor för en representativ och trivsam utemiljö.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 4 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Snow covered residential area with clean cleared walkways during a bright winter day" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZdwB_Nt4bEIdcuM0gJVj0ollGttxeR1gpxSak1D1guzgQBIklEm_WfP0LkkG6aqXQHUritgP_JoXwdoed2Fox1m4vjOCDL1f4TpakRoylGBSi-iNS6Vm1IeTl6al1V21n1FUoD2XFWqG835OVrvZK3GVYW1JZwQFWpoZ6SykzvRZTd_RfWePAww36HxqquqInXynSb9JiDwFeJPpbyD7Grg3K9tUJn6zikTreyJlaY-6E7eS9x_6I1rm7_zUwHb5zU_oPQLezbo0"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Snöröjning</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Effektiv halkbekämpning och snöröjning för säker framkomlighet vintertid.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 5 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sunlight hitting a clean modern office corridor with minimalist interior design and glass partitions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaX4abkLUv5WIUZAtCI_CqljIvqHkV6RplUnDVqkKCVUULSsRtCMSoQ_-fMvN4ATfCFhFAjmSv2aA8Ib1ucKGra64B-lH2-BrQcumthNSThpKxDwu2TN5tTJuLji6OU76x4HUBTy2O2vG6rRkvksnHNFSX7ps3_DtGh7BqqtDfQZJ1XT841f2QxEUmEEA9iKPtzEJ6YFwoKSnQ9-sUGRCpAMuU0a7ZlAcvKPjGesvGEW8m1dSVyDN8jmNs-ftiyMOQYAWQ20J48qY"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Lokalvård</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Anpassad städning för kontor och kommersiella lokaler med fokus på kvalitet.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 6 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Technical drawing on a tablet next to modern ventilation equipment in a high-tech facility" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBr6siV5ZCZIyiZ2QXN5iPH_XlDqj4wUlbNSTMwrbsaWAcpTyp0FcHOAK-d1eareYQTcqbvqO7pfmR-UiQTovqv9VQgARezehpAgrjWSI3HFDav_1iFuNkEVYVtFhvlwBSH231Z7CqxZjh9BgolAYcR9iNYbywsYmBHkumeGAYQbz91sNvLQQtC7ewDafiOz4eZsEH67licoBKjwSxERcYYwoVoiGwGT6LPUZ2nvpkjVdMKbUrkqT9e2swjvJm6D9nyx2mYQj2dg84"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Teknisk förvaltning</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Strategiskt underhåll av fastighetens tekniska system och installationer.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 7 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Construction worker inspecting a modern building facade with precision tools" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkhFvZWYSqg1ReZviDlAtnG4yWNa3-opb6GexaKGQWFoMyAfabVh6IYWXACHEnNeCYnTyo2ui7KpMwVjaeYmDOftLyjpS5uiJI43Qgcmamm1JThEif3PUY9601OZSzI2bUsxXBU0PabFIEEuaf5bkrn9Mj1c14kFAjBQiTsjxyRcq3sQjRY_V_ZqSn00yCdgEFUKFXbveFhkHt_tWGiYJ_3Ow6mXvBnxAcpGZ3n7GyPqmmeiWsYhcpYrZXJsVV-CRlY0fFzTR3r0U"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Fasadunderhåll</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Regelbundna kontroller och åtgärder för att skydda fastighetens yttre skal.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 8 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-crop group-hover:scale-105 transition-transform duration-500" data-alt="Professional recycling center inside a modern building with clean organized bins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Lfrcaf-5eo9K4SlHMwvzvbV24vTRn5yc0blp1YXQhy6gY5xw68etG4sbWACgDua_MCB23hpUx-mqJ839wLkNqBRK7U6QygYbClXQ3Y3WW6ZPXUEgcpAi06t5e5aSAn4bMUzSTo-dgWCsqTciJj6u9Fj8ytAhtQda6_NPiTVzEfItzfsH6qqp89YHG1BacHm_VQ7VanpbAtWGtp7kQhbf5mFZAcxIzQTI0UZHDoyGIZnVCbAATJPq554GX5gTFUGSumW4v7udNzY"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Miljöhantering</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Optimering av avfallshantering och hållbarhetsarbete i fastigheten.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service 9 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300">
+<div class="aspect-video overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Interior of a modern laundry room with high-efficiency machines and clean white walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHb66mqXiiCU4f16pDfJmUTcvWUOWS4sb6foc1ZAEN238D_EhCAGlNZjyo9oZlrZkQPu2q8B_spHdCTsBEJyq9cT939PihVAzQwcNu5KdbV6_pkUhyea8gLIUw1u-GYinl9Xcw-VMTitDNmSCWonUkyQdf-0T4D0G6ImxXXihQFKv64Cb7-IQzHe4MI9_rX-lqAcrSDoOcK3yJ2iO-fJxMoJODBIFTvqCBKuw8A_gP4f2g5xJgkJdT1x1-BJ-v3FViARU3PK-C7tI"/>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-headline font-bold text-on-surface mb-3">Tvättstugeservice</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Full service och felavhjälpning för gemensamma tvättstugor och maskinparker.</p>
+<a class="flex items-center gap-2 text-primary font-bold group/link" href="#">
+                                Läs mer <span class="material-symbols-outlined group-hover/link:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Banner -->
+<section class="max-w-7xl mx-auto px-6 mb-32">
+<div class="relative bg-primary rounded-xl overflow-hidden p-12 md:p-20 shadow-2xl">
+<!-- Abstract architectural line pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 L100 0 M0 50 L50 0 M50 100 L100 50" fill="none" stroke="white" stroke-width="0.5"></path>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+<div class="max-w-2xl">
+<h2 class="text-3xl md:text-5xl font-headline font-extrabold text-on-primary mb-6 leading-tight">
+                            Redo att förbättra er fastighet?
+                        </h2>
+<p class="text-lg text-primary-fixed leading-relaxed">
+                            Låt oss diskutera hur vi kan skräddarsy en lösning som passar just er fastighets unika behov och utmaningar.
+                        </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="bg-surface-container-lowest text-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-on-primary transition-colors shadow-lg">
+                            Kontakta oss
+                        </button>
+<button class="border border-on-primary/30 text-on-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-white/5 transition-colors">
+                            Boka konsultation
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-16 pb-8 border-t border-slate-200 bg-[#f8f9fa]">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6 font-inter text-sm leading-relaxed">
+<div class="md:col-span-1">
+<span class="text-xl font-bold text-[#4f6073] mb-6 block">Knallens Fastighetsservice</span>
+<p class="text-slate-500 mb-6">
+                    Din trygga partner för modern fastighetsförvaltning i Skandinavien. Kvalitet, precision och hållbarhet i varje detalj.
+                </p>
+</div>
+<div>
+<h4 class="font-bold text-[#4f6073] mb-6 uppercase tracking-wider text-xs">Tjänster</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Fastighetsskötsel</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Trappstädning</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Trädgårdsservice</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Snöröjning</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#4f6073] mb-6 uppercase tracking-wider text-xs">Länkar</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Lokalvård</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Teknisk förvaltning</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Cookies</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-[#4f6073] mb-6 uppercase tracking-wider text-xs">Kontakt</h4>
+<p class="text-slate-500 mb-2">Besöksvägen 12</p>
+<p class="text-slate-500 mb-6">123 45 Borås</p>
+<p class="text-[#4f6073] font-bold">033-12 34 56</p>
+<p class="text-[#4f6073] font-bold">info@knallens.se</p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200/50 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs">
+<p>© 2024 Knallens Fastighetsservice AB. Alla rättigheter förbehållna.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary" href="#">LinkedIn</a>
+<a class="hover:text-primary" href="#">Instagram</a>
+<a class="hover:text-primary" href="#">Facebook</a>
+</div>
+</div>
+</footer>
+</body></html>

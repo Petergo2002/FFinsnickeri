@@ -1,0 +1,15 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "exclude": [
+    "dist",
+    ".astro",
+    "node_modules",
+    "download_stitch.js",
+    "Knallens Fastighetsservice – Hållbart Fastighetsunderhåll_files",
+    "stitch 2",
+    "stitch-exports"
+  ]
+}

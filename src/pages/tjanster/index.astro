@@ -1,0 +1,86 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { knallenServices, siteConfig } from "../../data/site";
+import CtaPanel from "../../components/CtaPanel.astro";
+---
+
+<BaseLayout title={`Tjänster | ${siteConfig.businessName}`} description={`Fasadrenovering, altanbygge och uterum från ${siteConfig.businessName}`}>
+  <!-- Hero Section -->
+  <section class="relative bg-surface-container-low overflow-hidden py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 items-center gap-12">
+      <div class="md:col-span-7 z-10">
+        <span class="inline-block text-[#CD061F] font-headline font-bold text-xs tracking-[0.2em] uppercase mb-4">Vår Expertis</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold text-on-surface tracking-tighter leading-[0.95] mb-8">
+            Våra Tjänster för <br/>
+            <span class="text-[#CD061F]">Hem och Utemiljö</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+            Vi erbjuder exakt tre tjänster: fasadrenovering, altanbygge och uterum. Allt vi gör utgår från kvalitet, estetik och kundens önskemål.
+        </p>
+      </div>
+      <div class="md:col-span-5 relative space-y-4">
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl border-4 border-white">
+          <img class="w-full h-full object-cover" alt="Fasadrenovering" src="/6143762d4d2345a2251cc83d.webp"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl border-4 border-white">
+          <img class="w-full h-full object-cover" alt="Altanbygge" src="/altan.webp"/>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-[#1a1a1a] text-white p-6 rounded-xl shadow-2xl hidden lg:block z-20 border border-white/10">
+          <p class="font-headline font-bold text-4xl leading-tight">3</p>
+          <p class="text-[10px] font-bold opacity-80 uppercase tracking-widest">Tjänster</p>
+        </div>
+      </div>
+    </div>
+    <!-- Background element -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-surface-container-high -skew-x-12 translate-x-1/2 pointer-events-none"></div>
+  </section>
+
+  <!-- Status Ribbon -->
+  <div class="bg-tertiary-container text-on-tertiary-container py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center gap-4 text-sm font-semibold tracking-wide uppercase text-center">
+      <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      <span>Fasadrenovering, altanbygge och uterum med fokus på kvalitet och estetik</span>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section class="py-24 md:py-32 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mb-20">
+        <h2 class="text-4xl font-headline font-bold text-on-surface tracking-tight mb-4">Exakt de tjänster vi står för</h2>
+        <p class="text-on-surface-variant max-w-2xl">Här hittar du våra tre tjänster, tydligt presenterade och anpassade för dig som vill skapa något vackert och användbart i hemmet.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {knallenServices.map((service) => (
+          <div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:bg-surface-container-high transition-all duration-300 shadow-sm hover:shadow-md border border-slate-100 flex flex-col">
+            <div class="p-8 flex-1 flex flex-col">
+              <div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[#CD061F]/10 text-[#CD061F]">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.iconPath || "M13 10V3L4 14h7v7l9-11h-7z"} />
+                </svg>
+              </div>
+              <h3 class="text-xl font-headline font-bold text-on-surface mb-3">{service.name}</h3>
+              <p class="text-on-surface-variant mb-6 leading-relaxed flex-1">{service.about[0]}</p>
+              <a class="flex items-center gap-2 text-[#CD061F] font-bold group/link mt-auto" href={`/tjanster/${service.slug}`}>
+                Läs mer 
+                <svg class="h-5 w-5 transform transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaPanel
+    eyebrow="Vår Expertis"
+    title="Redo att planera ditt nästa projekt?"
+    body="Låt oss diskutera en lösning som passar ditt hem, dina önskemål och din budget."
+    primaryHref="/kontakt"
+    primaryLabel="Kontakta oss"
+    secondaryHref="/projekt"
+    secondaryLabel="Se våra projekt"
+  />
+</BaseLayout>

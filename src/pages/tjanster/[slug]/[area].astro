@@ -1,0 +1,246 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import CtaPanel from "../../../components/CtaPanel.astro";
+import {
+  areas,
+  knallenServices,
+  siteConfig,
+  testimonials,
+  type KnallenService,
+  type Area
+} from "../../../data/site";
+
+/**
+ * Generates all static paths for service+area combinations.
+ * Creates routes like /tjanster/taktvatt/boras for every service/area pair.
+ */
+export function getStaticPaths() {
+  return knallenServices.flatMap((service) =>
+    areas
+      .filter((area) => !area.hasNoPage)
+      .map((area) => ({
+        params: { slug: service.slug, area: area.slug },
+        props: { service, area }
+      }))
+  );
+}
+
+interface Props {
+  service: KnallenService;
+  area: Area;
+}
+
+const { service, area } = Astro.props;
+
+// SEO-optimized title and description specific to this service+area combo
+const pageTitle = `${service.name} i ${area.name} | ${siteConfig.businessName}`;
+const pageDescription = `Professionell ${service.name.toLowerCase()} i ${area.name}. ${siteConfig.businessName} hjälper dig med ${service.name.toLowerCase()} i ${area.name} och omnejd. Kontakta oss för en kostnadsfri offert.`;
+
+// Pick a testimonial to show on this page
+const testimonial = testimonials[0];
+
+// Detect if this is Borås to use specific local copy
+const isMainCity = area.slug === "boras";
+const localIntro = isMainCity
+  ? `Borås är ett viktigt område för oss, och vi hjälper kunder där med snickeriprojekt som kombinerar kvalitet, estetik och kundvärde. Oavsett om det gäller ${service.name.toLowerCase()} planerar vi lösningen utifrån hemmet, önskemålen och hur resultatet ska användas i vardagen.`
+  : `I ${area.name} hjälper vi kunder med samma noggrannhet och engagemang som i hela vårt arbetsområde. När du anlitar oss för ${service.name.toLowerCase()} får du ett genomtänkt snickeriprojekt där funktion, form och kvalitet får arbeta tillsammans.`;
+
+const heroImage = service.image;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+
+  <!-- Hero Section -->
+  <section class="relative flex min-h-[620px] flex-col justify-center overflow-hidden bg-primary pt-16 pb-12 md:h-[700px] md:py-0">
+    <div class="absolute inset-0 opacity-60">
+      <img alt={`${service.name} i ${area.name}`} class="w-full h-full object-cover" src={heroImage} />
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 z-10">
+      <div class="max-w-2xl">
+        <!-- Breadcrumb -->
+        <nav class="mb-6 flex items-center gap-2 text-sm text-white/70 font-medium flex-wrap">
+          <a href="/" class="hover:text-white transition-colors">Hem</a>
+          <span>/</span>
+          <a href="/tjanster" class="hover:text-white transition-colors">Tjänster</a>
+          <span>/</span>
+          <a href={`/tjanster/${service.slug}`} class="hover:text-white transition-colors">{service.name}</a>
+          <span>/</span>
+          <span class="text-white">{area.name}</span>
+        </nav>
+
+        <span class="inline-block py-1 px-3 mb-6 bg-secondary text-on-secondary text-xs font-bold tracking-widest rounded-full uppercase">
+          {area.name}
+        </span>
+        <h1 class="font-headline text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tighter mb-6 leading-[1.1]">
+          {service.name} i {area.name}
+        </h1>
+        <p class="text-lg sm:text-xl text-white/90 mb-10 font-light leading-relaxed max-w-xl">
+          Professionell {service.name.toLowerCase()} i {area.name} med fokus på kvalitet, estetik och ett resultat som håller över tid.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/kontakt" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-secondary-dim transition-all text-center">
+            Boka kostnadsfritt hembesök
+          </a>
+          <a href={`/tjanster/${service.slug}`} class="border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all text-center">
+            Läs om tjänsten
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Area Intro -->
+  <section class="py-24 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center">
+        <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">{service.name} i {area.name}</span>
+        <h2 class="font-headline text-4xl font-bold text-on-surface mb-10 leading-tight tracking-tight">
+          Vi utför {service.name.toLowerCase()} i {area.name} – med lokalkännedom och hög kvalitet.
+        </h2>
+        <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed text-left max-w-3xl mx-auto">
+          <p>{localIntro}</p>
+          <p>{area.summary}</p>
+          <p>{service.about[0]}</p>
+        </div>
+        <a href="/kontakt" class="mt-12 inline-flex items-center gap-2 bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dim transition-all shadow-lg">
+          Begär offert
+          <span class="material-symbols-outlined text-xl">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- USP Cards -->
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-16">
+        <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Varför välja oss</span>
+        <h2 class="font-headline text-4xl font-bold text-on-surface mb-4">Vad du kan räkna med av oss</h2>
+        <p class="text-secondary-dim max-w-xl mx-auto text-lg">Vi kombinerar personlig service med erfarenhet och kvalitet för bästa resultat i {area.name}.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {service.usps.map((usp) => (
+          <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant/10 hover:border-secondary/30 hover:shadow-lg transition-all group">
+            <div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined">check_circle</span>
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-on-surface">{usp.title}</h3>
+            <p class="text-secondary-dim text-sm leading-relaxed">{usp.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonial -->
+  <section class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Quote card -->
+        <div class="relative overflow-hidden md:overflow-visible">
+          <div class="absolute -top-8 -left-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+          <div class="relative bg-surface-container-lowest p-10 md:p-14 rounded-3xl shadow-2xl border border-outline-variant/10">
+            <div class="flex gap-1 mb-8 text-secondary">
+              {[1, 2, 3, 4, 5].map(() => (
+                <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
+              ))}
+            </div>
+            <div class="flex items-center gap-4 pt-6 border-t border-outline-variant/10">
+              <div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container font-bold text-xl flex-shrink-0">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-on-surface">{testimonial.name}</h4>
+                <p class="text-secondary-dim font-medium uppercase tracking-widest text-xs">{testimonial.role} · {area.name}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Proof images -->
+        <div>
+          <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Utfört arbete</span>
+          <h2 class="font-headline text-3xl font-bold text-on-surface mb-6">Kundnöjdhet som talar för sig självt.</h2>
+          <p class="text-secondary-dim text-lg leading-relaxed mb-8">
+            Våra kunder återkommer och rekommenderar oss vidare. Se ett urval av utfört arbete kopplat till våra snickeriprojekt.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            {testimonials.flatMap(t => t.images).slice(0, 4).map((img, i) => (
+              <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-lg">
+                <img
+                  src={img}
+                  alt={`Utfört arbete ${i + 1} – ${service.name} i ${area.name}`}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                  <span class="text-white text-xs font-bold uppercase tracking-wider">Utfört i {area.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  {service.processSteps.length > 0 && (
+    <section class="py-24 bg-surface-container-low">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div class="max-w-xl">
+            <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Processen</span>
+            <h2 class="font-headline text-4xl font-bold text-on-surface">Så här går det till i {area.name}</h2>
+          </div>
+          <p class="text-secondary-dim md:max-w-xs">Strukturerad process från första kontakt till färdigt, besiktigat arbete.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          {service.processSteps.map((step, idx) => (
+            <div class="relative z-10">
+              <div class="text-6xl font-black text-outline-variant/30 mb-4 font-headline">0{idx + 1}</div>
+              <h4 class="font-bold text-lg mb-2 text-on-surface">{step.title}</h4>
+              <p class="text-secondary-dim text-sm leading-relaxed">{step.body}</p>
+              {idx < service.processSteps.length - 1 && (
+                <div class="hidden md:block absolute top-10 right-0 w-1/2 h-[2px] bg-outline-variant/20 -z-10"></div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Other areas this service covers -->
+  <section class="py-20 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Fler områden</span>
+        <h2 class="font-headline text-3xl font-bold text-on-surface">Vi utför {service.name.toLowerCase()} i hela regionen</h2>
+      </div>
+      <div class="flex flex-wrap gap-3 justify-center">
+        {areas.map((a) => (
+          <a
+            href={`/tjanster/${service.slug}/${a.slug}`}
+            class={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${
+              a.slug === area.slug
+                ? "bg-secondary text-on-secondary border-secondary shadow-md"
+                : "bg-surface-container-lowest text-on-surface border-outline-variant/20 hover:border-secondary hover:text-secondary"
+            }`}
+          >
+            {service.name} i {a.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaPanel
+    eyebrow={`${service.name} i ${area.name}`}
+    title={`Redo att anlita proffs för ${service.name.toLowerCase()} i ${area.name}?`}
+    body={`Vi svarar inom 24 timmar och erbjuder alltid kostnadsfri rådgivning och offert. Kontakta oss idag.`}
+    primaryHref="/kontakt"
+    primaryLabel="Få en kostnadsfri offert"
+    secondaryHref={`tel:${siteConfig.primaryPhone.replace(/\s+/g, "")}`}
+    secondaryLabel={`Ring oss: ${siteConfig.primaryPhone}`}
+  />
+</BaseLayout>

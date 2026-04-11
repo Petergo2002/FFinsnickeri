@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CtaPanel from "../../components/CtaPanel.astro";
+import PageHero from "../../components/PageHero.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import {
+  areas,
+  getCategoryChildren,
+  getCategoryRelatedCoreServices,
+  secondaryCategories,
+  siteConfig,
+  type SecondaryCategory
+} from "../../data/site";
+
+export function getStaticPaths() {
+  return secondaryCategories.map((category) => ({
+    params: { category: category.slug },
+    props: { category }
+  }));
+}
+
+interface Props {
+  category: SecondaryCategory;
+}
+
+const { category } = Astro.props;
+const children = getCategoryChildren(category.slug);
+const relatedCoreServices = getCategoryRelatedCoreServices(category.slug);
+---
+
+<BaseLayout
+  title={`${category.name} | ${siteConfig.businessName}`}
+  description={`${category.name} i ${siteConfig.city} från ${siteConfig.businessName}.`}
+>
+  <div class="flex flex-col gap-16 pb-24 md:gap-24">
+    <PageHero
+      eyebrow="Tjänstekategori"
+      title={category.name}
+      body={category.description}
+      bgImage="/images/service-fasadrenovering.png"
+      primaryHref="/kontakt"
+      primaryLabel="Få ett kostnadsförslag"
+      secondaryHref="/tjanster"
+      secondaryLabel="Alla tjänster"
+      meta={[
+        { label: "Tjänster", value: String(children.length) },
+        { label: "Områden", value: String(areas.length) },
+        { label: "Svarstid", value: "24 h" },
+        { label: "Erfarenhet", value: "10+ år" }
+      ]}
+    />
+
+    <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Vad du får"
+        title="Det här kännetecknar kategorin"
+        body={category.summary}
+      />
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {category.highlights.map((highlight) => (
+          <article class="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
+            <h3 class="mb-3 text-lg font-bold text-slate-900">{highlight}</h3>
+            <p class="text-sm leading-relaxed text-slate-600">
+              Vi planerar utförandet så att lösningen fungerar praktiskt för fastigheten och blir tydlig att följa upp för dig som beställare.
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Specifika tjänster"
+        title={`Tjänster inom ${category.name.toLowerCase()}`}
+        body="Här hittar du de enskilda tjänster som ingår i kategorin och som kan bokas utifrån fastighetens behov."
+      />
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {
+          children.map((service) => (
+            <a class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#CD061F]/20 hover:shadow-xl" href={`/tjanster/${category.slug}/${service.slug}`}>
+              <strong class="mb-2 text-xl font-extrabold text-slate-900 transition-colors group-hover:text-secondary">{service.name}</strong>
+              <span class="flex-grow leading-relaxed text-slate-600">{service.summary}</span>
+              <div class="mt-6 flex items-center text-sm font-bold uppercase tracking-wider text-secondary">
+                Läs om tjänsten
+                <svg class="ml-1 h-4 w-4 transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    {relatedCoreServices.length > 0 && (
+      <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Relaterat"
+          title="Kärntjänster inom samma område"
+          body="Här hittar du våra tjänster samlade som nästa steg om du vill jämföra olika projektupplägg."
+        />
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {
+            relatedCoreServices.map((service) => (
+              <a class="group relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl border border-slate-200 p-6" href={`/tjanster/${service.slug}`}>
+                <div class="absolute inset-0 bg-slate-900">
+                  <img src="https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=600&auto=format&fit=crop" alt={service.name} class="h-full w-full object-cover opacity-60 mix-blend-overlay transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div class="relative z-10 w-full rounded-xl border border-white/20 bg-white/10 p-4 shadow-lg backdrop-blur-md">
+                  <strong class="mb-1 block text-xl font-bold text-white">{service.name}</strong>
+                  <span class="block text-sm text-slate-200 line-clamp-3">{service.valueAngle}</span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    )}
+
+    <section class="border-y border-[#CD061F]/10 bg-[#CD061F]/5 py-24">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow="Verksamhetsområde"
+          title={`Vi utför ${category.name.toLowerCase()} i hela regionen`}
+          body={`Vi arbetar i ${siteConfig.serviceAreaLabel.toLowerCase()} och planerar varje uppdrag för att vara tillgängliga, tydliga och lätta att boka.`}
+        />
+        <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {areas.map((area) => (
+            <div class="flex items-center gap-4 rounded-xl border border-[#CD061F]/20 bg-white p-6 shadow-sm">
+              <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-[#CD061F]/10 text-secondary">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              </div>
+              <div>
+                <strong class="block text-lg font-bold text-slate-900">{area.name}</strong>
+                <span class="text-sm text-slate-600">{area.summary}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CtaPanel
+      eyebrow="Kontakta oss"
+      title="Vill du boka eller diskutera rätt åtgärd?"
+      body="Vi hjälper dig att avgöra vilken lösning som passar bäst för ditt hem, dina önskemål och din budget."
+      primaryHref="/kontakt"
+      primaryLabel="Kontakta oss"
+      secondaryHref="/tjanster"
+      secondaryLabel="Se fler tjänster"
+    />
+  </div>
+</BaseLayout>

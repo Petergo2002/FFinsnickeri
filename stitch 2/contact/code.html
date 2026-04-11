@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="sv"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#fe8983",
+              "surface-container-highest": "#dbe4e7",
+              "on-tertiary": "#faf8ff",
+              "on-error-container": "#752121",
+              "inverse-primary": "#d5e7fe",
+              "on-surface": "#2b3437",
+              "secondary": "#5c5f64",
+              "surface-variant": "#dbe4e7",
+              "on-tertiary-fixed": "#353b53",
+              "error": "#9f403d",
+              "surface-container-low": "#f1f4f6",
+              "error-dim": "#4e0309",
+              "surface-bright": "#f8f9fa",
+              "on-secondary": "#f7f9ff",
+              "background": "#f8f9fa",
+              "primary-fixed-dim": "#c4d6ed",
+              "secondary-container": "#e0e2e8",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#e3e9ec",
+              "surface-tint": "#4f6073",
+              "primary-fixed": "#d2e4fb",
+              "on-secondary-fixed": "#3c4044",
+              "secondary-fixed": "#e0e2e8",
+              "surface-dim": "#d1dce0",
+              "on-tertiary-container": "#474d67",
+              "tertiary-fixed-dim": "#c8cdec",
+              "tertiary": "#585e78",
+              "surface-container": "#eaeff1",
+              "surface": "#f8f9fa",
+              "on-primary-container": "#425366",
+              "inverse-surface": "#0c0f10",
+              "tertiary-dim": "#4c526c",
+              "on-surface-variant": "#586064",
+              "primary-dim": "#435467",
+              "inverse-on-surface": "#9b9d9e",
+              "on-error": "#fff7f6",
+              "primary": "#4f6073",
+              "secondary-dim": "#505358",
+              "on-tertiary-fixed-variant": "#515771",
+              "on-background": "#2b3437",
+              "tertiary-container": "#d6dbfb",
+              "on-primary-fixed": "#304153",
+              "on-secondary-container": "#4f5257",
+              "outline-variant": "#abb3b7",
+              "on-primary": "#f5f8ff",
+              "tertiary-fixed": "#d6dbfb",
+              "outline": "#737c7f",
+              "on-primary-fixed-variant": "#4c5d70",
+              "primary-container": "#d2e4fb",
+              "secondary-fixed-dim": "#d2d4da",
+              "on-secondary-fixed-variant": "#595c61"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-rhythm-no-borders { border: none !important; }
+        .glass-header { backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none border-b border-slate-200/20 tonal-rhythm-no-borders">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-6 h-20">
+<div class="text-2xl font-bold tracking-tighter text-[#4f6073] dark:text-white uppercase font-headline">
+                Knallens Fastighetsservice
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-manrope text-lg font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-[#4f6073] transition-colors" href="#">Hem</a>
+<a class="font-manrope text-lg font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-[#4f6073] transition-colors" href="#">Tjänster</a>
+<a class="font-manrope text-lg font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-[#4f6073] transition-colors" href="#">Om oss</a>
+<a class="font-manrope text-lg font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-[#4f6073] transition-colors" href="#">Referenser</a>
+<a class="font-manrope text-lg font-semibold tracking-tight text-slate-600 dark:text-slate-400 hover:text-[#4f6073] transition-colors" href="#">Felanmälan</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-primary-dim transition-all active:scale-95 duration-200" href="#">
+                Kontakta oss
+            </a>
+</nav>
+</header>
+<main class="pt-32 pb-20">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-6 mb-20">
+<div class="max-w-3xl">
+<span class="text-primary font-bold tracking-[0.1em] text-xs uppercase mb-4 block">HÖR AV DIG</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-background tracking-tighter mb-6 leading-tight">
+                    Vi tar hand om din <span class="text-primary">fastighet</span>.
+                </h1>
+<p class="text-xl text-secondary leading-relaxed max-w-2xl">
+                    Har du frågor om våra tjänster eller vill du begära en kostnadsfri offert? Vårt team av experter är redo att hjälpa dig med allt från trappstädning till teknisk förvaltning.
+                </p>
+</div>
+</section>
+<!-- Main Content Cluster -->
+<section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Contact Details Sidebar -->
+<aside class="lg:col-span-4 space-y-12 order-2 lg:order-1">
+<div class="space-y-8">
+<div class="group">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">call</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Ring oss</h3>
+</div>
+<p class="text-secondary pl-11 text-lg">08-123 45 67</p>
+</div>
+<div class="group">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">E-post</h3>
+</div>
+<p class="text-secondary pl-11 text-lg">info@knallensfastighet.se</p>
+</div>
+<div class="group">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Adress</h3>
+</div>
+<p class="text-secondary pl-11 text-lg leading-relaxed">
+                            Fastighetsvägen 12<br/>
+                            123 45 Stockholm
+                        </p>
+</div>
+<div class="group">
+<div class="flex items-center gap-4 mb-2">
+<span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+<h3 class="font-headline font-bold text-lg text-on-surface">Öppettider</h3>
+</div>
+<div class="text-secondary pl-11 space-y-1 text-lg">
+<div class="flex justify-between max-w-[200px]"><span>Mån - Fre:</span> <span>07:00 - 16:00</span></div>
+<div class="flex justify-between max-w-[200px]"><span>Lör - Sön:</span> <span>Stängt</span></div>
+</div>
+</div>
+</div>
+<!-- Map Block -->
+<div class="rounded-xl overflow-hidden shadow-sm bg-surface-container-low h-64 relative group">
+<div class="absolute inset-0 bg-slate-300 animate-pulse">
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 transition-all duration-700" data-alt="clean minimalist map graphic of Stockholm city streets in soft grey and blue tones for a professional architectural business feel" data-location="Stockholm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFpR8GKUBS49Gc_dHc_GbNFdZJ_a19xx3iM0YQ5K3x8DswDf8ZG3jWWIfXs5TJYkJ9R3em4sF8WOOPfKq2wxsxEnhYulAx0LERRjZwTio4FpKoibpbKV18lFF1moqIPq43ISZEHOgNAEjPGT6BBRjilKesjZq01vME5sU86IXNnw-ZB07iF9Dj4KVslKyC8HPOcm5CWu-YbxRZFnVuRmyT_MiXGZHEInapRVjE1htCjy3QXS2RC__rE3ba3MRuKDuvywgkVvT-4QE"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur px-4 py-2 rounded-lg shadow-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">pin_drop</span>
+<span class="font-bold text-primary text-sm uppercase tracking-wider">Hitta hit</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Form Container -->
+<div class="lg:col-span-8 order-1 lg:order-2">
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl shadow-[rgba(43,52,55,0.04)_0px_12px_40px]">
+<h2 class="text-3xl font-headline font-bold text-on-surface mb-8">Skicka ett meddelande</h2>
+<form action="#" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Namn</label>
+<input class="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-on-surface" placeholder="Ditt fullständiga namn" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Telefon</label>
+<input class="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-on-surface" placeholder="070-000 00 00" type="tel"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">E-post</label>
+<input class="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-on-surface" placeholder="namn@foretag.se" type="email"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Tjänst av intresse</label>
+<select class="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-on-surface appearance-none">
+<option value="">Välj en tjänst...</option>
+<option value="fastighetsskotsel">Fastighetsskötsel</option>
+<option value="trappstadning">Trappstädning</option>
+<option value="tradgard">Trädgårdsservice</option>
+<option value="teknisk">Teknisk förvaltning</option>
+<option value="ovrigt">Övrigt</option>
+</select>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant font-label">Meddelande</label>
+<textarea class="w-full bg-surface-container-lowest border-outline-variant/30 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-on-surface resize-none" placeholder="Beskriv ditt ärende..." rows="5"></textarea>
+</div>
+<div class="md:col-span-2 pt-4">
+<button class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-lg font-bold text-lg hover:bg-primary-dim transition-all active:scale-95 shadow-lg shadow-primary/10 flex items-center justify-center gap-2" type="submit">
+                                Skicka förfrågan
+                                <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+<p class="text-xs text-secondary mt-4">
+                                Genom att skicka formuläret godkänner du vår hantering av personuppgifter enligt vår Privacy Policy.
+                            </p>
+</div>
+</form>
+</div>
+</div>
+</section>
+<!-- Trust Indicator Section -->
+<section class="max-w-7xl mx-auto px-6 mt-32">
+<div class="bg-tertiary-container/30 rounded-xl p-12 text-center">
+<h3 class="font-headline font-bold text-2xl text-on-tertiary-container mb-4">Behöver du akut hjälp?</h3>
+<p class="text-on-tertiary-container/80 text-lg mb-8 max-w-xl mx-auto">Vår jour är tillgänglig dygnet runt för akuta felanmälningar som inte kan vänta till nästa arbetsdag.</p>
+<a class="inline-flex items-center gap-3 bg-white text-primary px-8 py-3 rounded-full font-bold shadow-sm hover:shadow-md transition-shadow" href="tel:081234567">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">phone_in_talk</span>
+                    Fastighetsjour: 08-123 45 68
+                </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f8f9fa] dark:bg-slate-950 w-full pt-16 pb-8 border-t border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-6">
+<div class="space-y-4">
+<div class="text-xl font-bold text-[#4f6073] dark:text-white font-headline">
+                    Knallens Fastighetsservice
+                </div>
+<p class="font-inter text-sm leading-relaxed text-slate-500">
+                    Professionell fastighetsservice med fokus på kvalitet, hållbarhet och trygghet för våra kunder i Storstockholm.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">Tjänster</h4>
+<ul class="space-y-2 font-inter text-sm leading-relaxed">
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Fastighetsskötsel</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Trappstädning</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Trädgårdsservice</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Snöröjning</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">Företaget</h4>
+<ul class="space-y-2 font-inter text-sm leading-relaxed">
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Lokalvård</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Teknisk förvaltning</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-[#4f6073] transition-colors underline decoration-2 underline-offset-4" href="#">Cookies</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">Följ oss</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">hub</span>
+</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-slate-200/50">
+<p class="font-inter text-sm leading-relaxed text-slate-500 text-center md:text-left">
+                © 2024 Knallens Fastighetsservice AB. Alla rättigheter förbehållna.
+            </p>
+</div>
+</footer>
+</body></html>
