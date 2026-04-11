@@ -1,0 +1,65 @@
+---
+import { siteConfig } from "../data/site";
+
+interface Props {
+  item?: any;
+}
+
+const { item } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://knallens-fs.se";
+
+// Base Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": `${siteUrl}/#organization`,
+  "name": siteConfig.businessName,
+  "url": siteUrl,
+  "logo": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/logo.webp`,
+    "width": "512",
+    "height": "512"
+  },
+  "image": `${siteUrl}/service-hero-fasad.webp`,
+  "description": siteConfig.defaultDescription,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteConfig.address,
+    "addressLocality": siteConfig.city,
+    "addressRegion": "Västra Götaland",
+    "postalCode": "512 91",
+    "addressCountry": "SE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 57.3458,
+    "longitude": 13.0292
+  },
+  "telephone": siteConfig.primaryPhone,
+  "email": siteConfig.primaryEmail,
+  "priceRange": "$$",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "17:00"
+    }
+  ],
+  "areaServed": [
+    { "@type": "City", "name": "Borås" },
+    { "@type": "City", "name": "Svenljunga" },
+    { "@type": "City", "name": "Östra Frölunda" },
+    { "@type": "City", "name": "Göteborg" }
+  ]
+};
+
+const schemas: any[] = [organizationSchema];
+
+if (item) {
+  schemas.push(item);
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemas)} />

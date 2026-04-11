@@ -1,15 +1,22 @@
 ---
 import { siteConfig, knallenServices } from "../data/site";
+import Schema from "../components/Schema.astro";
 import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  canonicalURL?: string | URL;
+  schema?: any;
 }
 
 const {
   title = `${siteConfig.businessName} | ${siteConfig.tagline}`,
-  description = siteConfig.defaultDescription
+  description = siteConfig.defaultDescription,
+  image = "/service-hero-fasad.webp",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+  schema
 } = Astro.props;
 
 const pathname = Astro.url.pathname;
@@ -22,8 +29,30 @@ const phoneHref = `tel:${siteConfig.primaryPhone.replace(/\s+/g, "")}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+    <Schema item={schema} />
+
     <title>{title}</title>
+    <link rel="icon" type="image/webp" href="/logo.webp" />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container flex min-h-screen flex-col antialiased">

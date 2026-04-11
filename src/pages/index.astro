@@ -21,23 +21,23 @@ const homepageServices = homepageServiceSlugs
 ---
 
 <BaseLayout
-  title={`${siteConfig.businessName} i ${siteConfig.city} | ${siteConfig.tagline}`}
-  description={siteConfig.defaultDescription}
+  title={`${siteConfig.businessName} | Finsnickeri & Fasadrenovering i Borås & Svenljunga`}
+  description={`Letar du efter finsnickeri i Borås eller Svenljunga? ${siteConfig.businessName} hjälper dig med fasadrenovering, altanbygge och uterum med fokus på kvalitet och estetik.`}
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">
     <div class="absolute inset-0 opacity-40">
-      <img class="w-full h-full object-cover" data-alt="Proffessionell taktvätt i Sverige" src="/hero_swedish_house.png" />
+      <img class="w-full h-full object-cover" alt="Vackert trädhus i Sverige som representerar professionellt snickeriarbete" src="/hero_swedish_house.png" />
       <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
     </div>
     <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 z-10">
       <div class="max-w-3xl">
-        <span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">Finsnickeri i Östra Frölunda</span>
+        <span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">Proffs på snickeri i Borås & Svenljunga</span>
         <h1 class="font-headline text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-8">
-          {siteConfig.tagline}
+          Finsnickeri & Fasadrenovering i Borås & Svenljunga
         </h1>
         <p class="text-lg sm:text-xl md:text-2xl text-on-primary/90 leading-relaxed mb-12 max-w-2xl">
-          {siteConfig.businessName} hjälper kunder med fasadrenovering, altanbygge och uterum med fokus på kvalitet, estetik och kundvärde.
+          {siteConfig.businessName} förvandlar ditt hem med skräddarsydda snickerilösningar, från altanbygge till kompletta fasadrenoveringar.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/kontakt" class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-bright transition-all shadow-xl">
@@ -106,7 +106,7 @@ const homepageServices = homepageServiceSlugs
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div class="relative overflow-hidden md:overflow-visible">
           <div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary-container rounded-full blur-3xl"></div>
-          <img class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" data-alt="Professional technician" src="/service-about-fasad.webp" />
+          <img class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" alt="Fasadrenovering utförd av professionell snickare" src="/service-about-fasad.webp" />
           <div class="absolute -bottom-8 -right-8 bg-surface-container-lowest p-8 rounded-2xl shadow-xl z-20 hidden md:block border border-outline-variant/10">
             <p class="text-secondary text-4xl font-extrabold mb-1">Metod &</p>
             <p class="text-on-surface font-bold text-sm uppercase tracking-wider">Trygg Leverans</p>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://knallens-fs.se/sitemap-index.xml

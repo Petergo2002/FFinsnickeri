@@ -214,8 +214,7 @@ export const areas: Area[] = [
   {
     slug: "goteborg",
     name: "Göteborg",
-    summary: "Vi utför även snickeriprojekt i Göteborg med omnejd.",
-    hasNoPage: true
+    summary: "Vi hjälper kunder i Göteborg med omnejd med professionella snickeriprojekt, från altaner till fasadrenovering."
   }
 ];
 
