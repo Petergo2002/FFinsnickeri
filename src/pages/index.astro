@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaPanel from "../components/CtaPanel.astro";
 import Testimonials from "../components/Testimonials.astro";
 import {
-  knallenServices,
+  serviceDetails,
   projectCases,
   siteConfig,
   trustPoints
@@ -16,7 +16,7 @@ const homepageServiceSlugs = [
 ] as const;
 
 const homepageServices = homepageServiceSlugs
-  .map((slug) => knallenServices.find((service) => service.slug === slug))
+  .map((slug) => serviceDetails.find((service) => service.slug === slug))
   .filter((service) => service !== undefined);
 ---
 

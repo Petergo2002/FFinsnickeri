@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://knallens-fs.se",
+  site: "https://ffinsnickeri.se",
 
   integrations: [sitemap()],
 

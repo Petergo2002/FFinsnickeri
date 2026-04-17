@@ -3,10 +3,10 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import CtaPanel from "../../../components/CtaPanel.astro";
 import {
   areas,
-  knallenServices,
+  serviceDetails,
   siteConfig,
   testimonials,
-  type KnallenService,
+  type ServiceDetail,
   type Area
 } from "../../../data/site";
 
@@ -15,7 +15,7 @@ import {
  * Creates routes like /tjanster/taktvatt/boras for every service/area pair.
  */
 export function getStaticPaths() {
-  return knallenServices.flatMap((service) =>
+  return serviceDetails.flatMap((service) =>
     areas
       .filter((area) => !area.hasNoPage)
       .map((area) => ({
@@ -26,7 +26,7 @@ export function getStaticPaths() {
 }
 
 interface Props {
-  service: KnallenService;
+  service: ServiceDetail;
   area: Area;
 }
 

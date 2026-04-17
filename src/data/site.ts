@@ -261,7 +261,7 @@ export const projectCases: ProjectCase[] = [
       "En sliten fasad fick nytt liv genom noggrant snickeriarbete och ett genomtänkt helhetsgrepp.",
     result:
       "Fasaden fick ett renare uttryck, bättre balans i detaljerna och ett resultat som lyfter hela huset.",
-    image: "https://media.knallens-fs.se/IMG_20240816_204139.jpg"
+    image: "https://media.ffinsnickeri.se/IMG_20240816_204139.jpg"
   },
   {
     slug: "altanbygge-boras",
@@ -269,10 +269,10 @@ export const projectCases: ProjectCase[] = [
     location: "Borås",
     service: "Altanbygge",
     summary:
-      "Vi byggde en altan som skapade en tydlig övergång mellan huset och trädgården.",
+      "Vi byggde en altan och skapade en tydlig övergång mellan huset och trädgården.",
     result:
       "Hemmet fick en mer användbar utemiljö och en naturlig plats för vardag, vila och umgänge.",
-    image: "https://media.knallens-fs.se/IMG_20240429_202932.jpg"
+    image: "https://media.ffinsnickeri.se/IMG_20240429_202932.jpg"
   },
   {
     slug: "uterum-svenljunga",
@@ -283,7 +283,7 @@ export const projectCases: ProjectCase[] = [
       "Ett uterum planerades för att ge familjen mer plats och ett mjukt möte mellan inne och ute.",
     result:
       "Projektet skapade ett ljust och harmoniskt rum som kan användas stora delar av året.",
-    image: "https://media.knallens-fs.se/IMG_20250619_190619.jpg"
+    image: "https://media.ffinsnickeri.se/IMG_20250619_190619.jpg"
   },
   {
     slug: "fasadrenovering-svenljunga",
@@ -294,7 +294,7 @@ export const projectCases: ProjectCase[] = [
       "Vi tog fram en lösning som bevarade husets uttryck och samtidigt gav fasaden ett tydligt lyft.",
     result:
       "Helhetsintrycket blev varmare, mer sammanhållet och mer hållbart för framtiden.",
-    image: "https://media.knallens-fs.se/Takomläggning.jpg"
+    image: "https://media.ffinsnickeri.se/Takomläggning.jpg"
   },
   {
     slug: "altanbygge-svenljunga",
@@ -305,7 +305,7 @@ export const projectCases: ProjectCase[] = [
       "En ny altan formgavs efter husets proportioner och tomtens naturliga flöden.",
     result:
       "Familjen fick en bekväm och vacker plats för måltider, vila och sommarkvällar.",
-    image: "https://media.knallens-fs.se/taktvatt.jpeg"
+    image: "https://media.ffinsnickeri.se/taktvatt.jpeg"
   },
   {
     slug: "uterum-boras",
@@ -316,7 +316,7 @@ export const projectCases: ProjectCase[] = [
       "Vi byggde ett uterum som skapade mer ljus, mer rymd och en tydlig koppling till trädgården.",
     result:
       "Hemmet fick ett användbart tillskott med hög trivsel och ett uttryck som smälter samman med huset.",
-    image: "https://media.knallens-fs.se/IMG_20250723_150752.jpg"
+    image: "https://media.ffinsnickeri.se/IMG_20250723_150752.jpg"
   }
 ];
 
@@ -341,30 +341,30 @@ export const testimonials: Testimonial[] = [
   }
 ];
 
-export interface KnallenUsp {
+export interface ServiceUsp {
   title: string;
   body: string;
 }
 
-export interface KnallenProcessStep {
+export interface ProcessStep {
   title: string;
   body: string;
 }
 
-export interface KnallenService {
+export interface ServiceDetail {
   slug: string;
   name: string;
   accent: string;
   heroSubtitle: string;
   about: string[];
-  usps: KnallenUsp[];
-  processSteps: KnallenProcessStep[];
+  usps: ServiceUsp[];
+  processSteps: ProcessStep[];
   iconPath: string;
   image: string;
   aboutImage: string;
 }
 
-export const knallenServices: KnallenService[] = [
+export const serviceDetails: ServiceDetail[] = [
   {
     slug: "fasadrenovering",
     name: "Fasadrenovering",
@@ -520,8 +520,8 @@ export const knallenServices: KnallenService[] = [
   }
 ];
 
-export function getKnallenServiceBySlug(slug: string) {
-  return knallenServices.find((s) => s.slug === slug);
+export function getServiceDetailBySlug(slug: string) {
+  return serviceDetails.find((s) => s.slug === slug);
 }
 
 export function getCategoryBySlug(slug: string) {

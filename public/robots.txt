@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://knallens-fs.se/sitemap-index.xml
+Sitemap: https://ffinsnickeri.se/sitemap-index.xml
