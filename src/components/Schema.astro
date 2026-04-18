@@ -58,8 +58,8 @@ const organizationSchema = {
 const schemas: any[] = [organizationSchema];
 
 if (item) {
-  schemas.push(item);
+  schemas.push(...(Array.isArray(item) ? item : [item]));
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schemas)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schemas)} />

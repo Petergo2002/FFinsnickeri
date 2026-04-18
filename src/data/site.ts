@@ -355,6 +355,9 @@ export interface ServiceDetail {
   slug: string;
   name: string;
   accent: string;
+  seoTitle: string;
+  seoDescription: string;
+  areaSeoDescription: string;
   heroSubtitle: string;
   about: string[];
   usps: ServiceUsp[];
@@ -371,6 +374,11 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-fasad.webp",
     aboutImage: "/service-about-fasad.webp",
     accent: "orange",
+    seoTitle: "Fasadrenovering i Borås & Svenljunga",
+    seoDescription:
+      "F.Finsnickeri hjälper dig med fasadrenovering i Borås och Svenljunga med fokus på hållbarhet, husets karaktär och ett slutresultat som håller över tid.",
+    areaSeoDescription:
+      "Vi renoverar fasader med fokus på hållbarhet, tydlig planering och ett uttryck som passar husets arkitektur.",
     heroSubtitle:
       "Vi renoverar fasader med fokus på kvalitet, estetik och ett resultat som lyfter husets helhet.",
     about: [
@@ -422,6 +430,11 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-altan.webp",
     aboutImage: "/614374637ac319ed0e56d8fc.webp",
     accent: "amber",
+    seoTitle: "Altanbygge i Borås & Svenljunga",
+    seoDescription:
+      "F.Finsnickeri bygger altaner i Borås och Svenljunga med fokus på funktion, helhetsintryck och en lösning som fungerar för hur du vill använda uteplatsen.",
+    areaSeoDescription:
+      "Vi bygger altaner som planeras efter platsens förutsättningar, husets uttryck och hur ytan ska användas i vardagen.",
     heroSubtitle:
       "Vi bygger altaner som ger hemmet en naturlig samlingsplats och en vacker övergång till utemiljön.",
     about: [
@@ -473,6 +486,11 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-uterum.webp",
     aboutImage: "/service-about-uterum.webp",
     accent: "blue",
+    seoTitle: "Uterum i Borås & Svenljunga",
+    seoDescription:
+      "F.Finsnickeri bygger uterum i Borås och Svenljunga med fokus på ljus, komfort och en genomtänkt övergång mellan hemmet och utemiljön.",
+    areaSeoDescription:
+      "Vi bygger uterum som skapar mer ljus, fler användbara månader och en naturlig koppling mellan inne och ute.",
     heroSubtitle:
       "Vi bygger uterum som skapar mer ljus, mer plats och en lugn övergång mellan inne och ute.",
     about: [

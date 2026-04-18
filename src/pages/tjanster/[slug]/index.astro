@@ -20,20 +20,64 @@ interface Props {
 }
 
 const { service } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
-// Use dynamic images from service data
-const heroImage = service.image;
-const aboutImage = service.aboutImage || "/6143762d4d2345a2251cc83d.webp";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tjänster",
+      item: `${siteUrl}/tjanster/`
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: service.name,
+      item: currentUrl
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${currentUrl}#service`,
+  name: service.name,
+  serviceType: service.name,
+  description: service.seoDescription,
+  url: currentUrl,
+  image: new URL(service.image, Astro.site).toString(),
+  provider: {
+    "@id": `${siteUrl}/#organization`
+  },
+  areaServed: [
+    { "@type": "City", name: "Borås" },
+    { "@type": "City", name: "Svenljunga" },
+    { "@type": "City", name: "Göteborg" }
+  ]
+};
 ---
 
 <BaseLayout
-  title={`${service.name} | ${siteConfig.businessName}`}
-  description={`${service.heroSubtitle} i ${siteConfig.city} från ${siteConfig.businessName}.`}
+  title={`${service.seoTitle} | ${siteConfig.businessName}`}
+  description={service.seoDescription}
+  image={service.image}
+  schema={[breadcrumbSchema, serviceSchema]}
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[620px] flex-col justify-center overflow-hidden bg-primary pt-16 pb-12 md:h-[716px] md:py-0">
     <div class="absolute inset-0 opacity-60">
-      <img alt={service.name} class="w-full h-full object-cover" src={heroImage} />
+      <img alt={service.name} class="w-full h-full object-cover" src={service.image} />
     </div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#4f6073] via-[#4f6073]/80 to-transparent"></div>
     <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 z-10">

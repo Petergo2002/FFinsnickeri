@@ -1,0 +1,54 @@
+{
+  "redirects": [
+    {
+      "source": "/fasadrenovering",
+      "destination": "/tjanster/fasadrenovering",
+      "permanent": true
+    },
+    {
+      "source": "/fasadrenovering/",
+      "destination": "/tjanster/fasadrenovering",
+      "permanent": true
+    },
+    {
+      "source": "/altanbygge",
+      "destination": "/tjanster/altanbygge",
+      "permanent": true
+    },
+    {
+      "source": "/altanbygge/",
+      "destination": "/tjanster/altanbygge",
+      "permanent": true
+    },
+    {
+      "source": "/uterum",
+      "destination": "/tjanster/uterum",
+      "permanent": true
+    },
+    {
+      "source": "/uterum/",
+      "destination": "/tjanster/uterum",
+      "permanent": true
+    },
+    {
+      "source": "/koeksbygge",
+      "destination": "/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/koeksbygge/",
+      "destination": "/tjanster",
+      "permanent": true
+    },
+    {
+      "source": "/tjanster/snickeriprojekt/:slug",
+      "destination": "/tjanster/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/tjanster/snickeriprojekt/:slug/",
+      "destination": "/tjanster/:slug",
+      "permanent": true
+    }
+  ]
+}

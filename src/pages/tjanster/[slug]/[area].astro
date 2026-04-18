@@ -31,10 +31,61 @@ interface Props {
 }
 
 const { service, area } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 // SEO-optimized title and description specific to this service+area combo
 const pageTitle = `${service.name} i ${area.name} | ${siteConfig.businessName}`;
-const pageDescription = `Professionell ${service.name.toLowerCase()} i ${area.name}. ${siteConfig.businessName} hjälper dig med ${service.name.toLowerCase()} i ${area.name} och omnejd. Kontakta oss för en kostnadsfri offert.`;
+const pageDescription = `${siteConfig.businessName} hjälper dig med ${service.name.toLowerCase()} i ${area.name}. ${service.areaSeoDescription} Kontakta oss för kostnadsfri offert och rådgivning.`;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tjänster",
+      item: `${siteUrl}/tjanster/`
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: service.name,
+      item: `${siteUrl}/tjanster/${service.slug}/`
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: `${service.name} i ${area.name}`,
+      item: currentUrl
+    }
+  ]
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${currentUrl}#service`,
+  name: `${service.name} i ${area.name}`,
+  serviceType: service.name,
+  description: pageDescription,
+  url: currentUrl,
+  image: new URL(service.image, Astro.site).toString(),
+  provider: {
+    "@id": `${siteUrl}/#organization`
+  },
+  areaServed: {
+    "@type": "City",
+    name: area.name
+  }
+};
 
 // Pick a testimonial to show on this page
 const testimonial = testimonials[0];
@@ -48,7 +99,12 @@ const localIntro = isMainCity
 const heroImage = service.image;
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={service.image}
+  schema={[breadcrumbSchema, serviceSchema]}
+>
 
   <!-- Hero Section -->
   <section class="relative flex min-h-[620px] flex-col justify-center overflow-hidden bg-primary pt-16 pb-12 md:h-[700px] md:py-0">
@@ -76,7 +132,7 @@ const heroImage = service.image;
           {service.name} i {area.name}
         </h1>
         <p class="text-lg sm:text-xl text-white/90 mb-10 font-light leading-relaxed max-w-xl">
-          Professionell {service.name.toLowerCase()} i {area.name} med fokus på kvalitet, estetik och ett resultat som håller över tid.
+          {siteConfig.businessName} hjälper dig med {service.name.toLowerCase()} i {area.name} med fokus på kvalitet, estetik och ett resultat som håller över tid.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/kontakt" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-secondary-dim transition-all text-center">
