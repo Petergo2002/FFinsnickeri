@@ -1,35 +1,57 @@
 ---
 import { testimonials } from "../data/site";
+
+const carouselTestimonials = [...testimonials, ...testimonials];
 ---
 
 <section class="py-32 bg-surface">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden">
     <div class="mb-20">
       <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Omdömen</span>
-      <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface leading-tight mb-8">Omdömen från Google.</h2>
+      <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface leading-tight mb-8">Omdömen från kunder.</h2>
       <p class="text-secondary-dim text-lg leading-relaxed max-w-2xl">
         Läs vad våra nöjda kunder säger om våra tjänster och upptäck varför de väljer att rekommendera oss till andra.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      {testimonials.map((testimonial) => (
-        <div class="flex flex-col bg-surface-container-lowest p-8 md:p-10 rounded-3xl shadow-xl border border-outline-variant/10">
-          <div class="flex gap-1 mb-6 text-secondary">
-            {[1, 2, 3, 4, 5].map(() => (
-              <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-            ))}
-          </div>
-          <div class="flex items-center gap-4 border-t border-outline-variant/10 pt-6">
-            <div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container font-bold text-lg">
-              {testimonial.name.charAt(0)}
+    <div class="testimonial-carousel relative -mx-4 px-4 sm:-mx-6 sm:px-6" aria-label="Kundomdömen">
+      <div class="testimonial-track flex w-max gap-5 sm:gap-6">
+        {carouselTestimonials.map((testimonial, index) => (
+          <article
+            class="flex w-[82vw] max-w-[380px] shrink-0 flex-col rounded-3xl border border-outline-variant/10 bg-surface-container-lowest p-7 shadow-xl sm:w-[380px] md:p-8"
+            aria-hidden={index >= testimonials.length ? "true" : undefined}
+          >
+            <div class="mb-6 flex gap-1 text-secondary" aria-label="5 av 5 stjärnor">
+              {[1, 2, 3, 4, 5].map(() => (
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+              ))}
             </div>
-            <div>
-              <h4 class="text-lg font-bold text-on-surface">{testimonial.name}</h4>
-              <p class="text-secondary-dim font-medium uppercase tracking-widest text-[10px]">{testimonial.role}</p>
+            {testimonial.text ? (
+              <p class="mb-8 line-clamp-6 min-h-[9rem] text-secondary-dim leading-relaxed">
+                “{testimonial.text}”
+              </p>
+            ) : (
+              <p class="mb-8 min-h-[9rem] text-secondary-dim leading-relaxed">
+                Kundomdöme registrerat för utfört arbete.
+              </p>
+            )}
+            <div class="mt-auto flex items-center gap-4 border-t border-outline-variant/10 pt-6">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary-container text-lg font-bold text-on-secondary-container">
+                {testimonial.name.charAt(0)}
+              </div>
+              <div class="min-w-0">
+                <h4 class="truncate text-lg font-bold text-on-surface">{testimonial.name}</h4>
+                <p class="line-clamp-2 text-[10px] font-medium uppercase tracking-widest text-secondary-dim">{testimonial.role}</p>
+              </div>
             </div>
-          </div>
-        </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-10 flex justify-center gap-2" aria-hidden="true">
+      {testimonials.slice(0, 5).map(() => (
+        <span class="h-1.5 w-8 rounded-full bg-secondary-container"></span>
       ))}
     </div>
 

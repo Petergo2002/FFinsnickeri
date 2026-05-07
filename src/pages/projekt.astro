@@ -3,14 +3,51 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../data/site";
 
 const galleryImages = [
-  "/service-about-fasad.webp",
-  "/service-about-uterum.webp",
-  "/service-ref-new.webp",
-  "/614374637ac319ed0e56d8fc.webp",
-  "/614375647ac319ed0e56d905.webp",
-  "/6143762d4d2345a2251cc83d.webp",
-  "/709d06fbbb16a3cd3e6b4d68fcf7094e40095ae8.webp",
-  "/altan.webp"
+  {
+    src: "/reference-altan-dark-house.jpg",
+    alt: "Nybyggd altan vid mörk träfasad",
+    featured: true
+  },
+  {
+    src: "/reference-fasad-white-outbuilding.jpg",
+    alt: "Ljus träfasad och takdetaljer på komplementbyggnad"
+  },
+  {
+    src: "/reference-altan-evening.jpg",
+    alt: "Altan med infälld kvällsbelysning"
+  },
+  {
+    src: "/service-about-fasad.webp",
+    alt: "Utfört fasadarbete på villa"
+  },
+  {
+    src: "/service-about-uterum.webp",
+    alt: "Uterum med trädetaljer"
+  },
+  {
+    src: "/service-ref-new.webp",
+    alt: "Referensbild från utfört snickeriarbete"
+  },
+  {
+    src: "/614374637ac319ed0e56d8fc.webp",
+    alt: "Altanbygge med trätrall"
+  },
+  {
+    src: "/614375647ac319ed0e56d905.webp",
+    alt: "Detaljbild från utfört snickeriarbete"
+  },
+  {
+    src: "/6143762d4d2345a2251cc83d.webp",
+    alt: "Färdigt snickeriprojekt vid hus"
+  },
+  {
+    src: "/709d06fbbb16a3cd3e6b4d68fcf7094e40095ae8.webp",
+    alt: "Referensbild från färdigt arbete"
+  },
+  {
+    src: "/altan.webp",
+    alt: "Träaltan som referensprojekt"
+  }
 ];
 ---
 
@@ -24,11 +61,11 @@ const galleryImages = [
     </h1>
 
     <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {galleryImages.map((src, index) => (
-        <figure class={`overflow-hidden rounded-[1.75rem] border border-surface-container-high bg-surface-container-low shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl ${index === 0 ? "sm:col-span-2" : ""}`}>
+      {galleryImages.map((image) => (
+        <figure class={`overflow-hidden rounded-[1.75rem] border border-surface-container-high bg-surface-container-low shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl ${image.featured ? "aspect-[4/3] sm:col-span-2 sm:aspect-[16/9]" : "aspect-[4/3]"}`}>
           <img
-            src={src}
-            alt={`Jobb utfört ${index + 1}`}
+            src={image.src}
+            alt={image.alt}
             class="h-full w-full object-cover"
             loading="lazy"
           />

@@ -101,4 +101,44 @@
       transform: translateY(0);
     }
   }
+
+  .testimonial-carousel {
+    mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+  }
+
+  .testimonial-track {
+    animation: testimonial-scroll 42s linear infinite;
+    will-change: transform;
+  }
+
+  .testimonial-carousel:hover .testimonial-track,
+  .testimonial-carousel:focus-within .testimonial-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes testimonial-scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-carousel {
+      overflow-x: auto;
+      mask-image: none;
+      scrollbar-width: none;
+    }
+
+    .testimonial-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-track {
+      animation: none;
+    }
+  }
 }

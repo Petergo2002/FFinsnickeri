@@ -202,6 +202,11 @@ const heroImage = service.image;
                 <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">star</span>
               ))}
             </div>
+            {testimonial.text && (
+              <p class="mb-8 text-lg leading-relaxed text-secondary-dim">
+                “{testimonial.text}”
+              </p>
+            )}
             <div class="flex items-center gap-4 pt-6 border-t border-outline-variant/10">
               <div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container font-bold text-xl flex-shrink-0">
                 {testimonial.name.charAt(0)}

@@ -322,6 +322,30 @@ export const projectCases: ProjectCase[] = [
 
 export const testimonials: Testimonial[] = [
   {
+    name: "Kerstin",
+    role: "Review · 15 maj 2025 · Nytt virke på liten altan",
+    text: "Noggrant och fantastiskt fint utförande - supernöjd! En pålitlig och proffsig hantverkare!",
+    images: ["/reference-altan-dark-house.jpg", "/reference-altan-evening.jpg"]
+  },
+  {
+    name: "Ireen",
+    role: "Review · 24 november 2024 · Sätta upp gipsskivor i sluttande innertak i Ulricehamn",
+    text: "Ferenc var både punktlig, hade ett bra bemötande och bra pris. Han höll schemat som vi kommit överens om och jobbet höll god kvalitet. Jag kommer att anlita honom fler gånger.",
+    images: ["/service-about-fasad.webp", "/6143762d4d2345a2251cc83d.webp"]
+  },
+  {
+    name: "Gunnar",
+    role: "Review · 5 augusti 2024 · Byte av kanalplasttak på uteplats i Härryda",
+    text: "",
+    images: ["/service-about-uterum.webp", "/service-ref-new.webp"]
+  },
+  {
+    name: "Mats",
+    role: "Review · 2 juli 2024 · Riva redskapsbod och ersätta med ny i Göteborg",
+    text: "Arbetade metodiskt och grundligt och var öppen för synpunkter under hela bygget. Hög kompetens. Är mycket nöjd.",
+    images: ["/reference-fasad-white-outbuilding.jpg", "/614374637ac319ed0e56d8fc.webp"]
+  },
+  {
     name: "Pierre Vettese",
     role: "Review from Google · 5/5 · 4 years ago",
     text: "Positive: Professionalism, Punctuality, Quality, Responsiveness, Value. … More",
