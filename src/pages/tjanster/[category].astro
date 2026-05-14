@@ -65,7 +65,7 @@ const breadcrumbSchema = {
       eyebrow="Tjänstekategori"
       title={`${category.name} i Borås & Svenljunga`}
       body={category.description}
-      bgImage="/images/service-fasadrenovering.png"
+      bgImage="/service-about-fasad.webp"
       primaryHref="/kontakt"
       primaryLabel="Få ett kostnadsförslag"
       secondaryHref="/tjanster"
@@ -130,7 +130,7 @@ const breadcrumbSchema = {
             relatedCoreServices.map((service) => (
               <a class="group relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl border border-slate-200 p-6" href={`/tjanster/${service.slug}`}>
                 <div class="absolute inset-0 bg-slate-900">
-                  <img src="https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=600&auto=format&fit=crop" alt={service.name} class="h-full w-full object-cover opacity-60 mix-blend-overlay transition-transform duration-500 group-hover:scale-105" />
+                  <img src="https://images.unsplash.com/photo-1542013936693-884638332954?q=80&w=600&auto=format&fit=crop&fm=webp" alt={`${service.name} utförd av snickare i Borås och Svenljunga`} class="h-full w-full object-cover opacity-60 mix-blend-overlay transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div class="relative z-10 w-full rounded-xl border border-white/20 bg-white/10 p-4 shadow-lg backdrop-blur-md">
                   <strong class="mb-1 block text-xl font-bold text-white">{service.name}</strong>

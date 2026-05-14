@@ -1,52 +1,55 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { siteConfig } from "../data/site";
+import referenceAltanDarkHouse from "../assets/seo/reference-altan-dark-house.jpg";
+import referenceAltanEvening from "../assets/seo/reference-altan-evening.jpg";
 
 const galleryImages = [
   {
-    src: "/reference-altan-dark-house.jpg",
-    alt: "Nybyggd altan vid mörk träfasad",
+    src: referenceAltanDarkHouse,
+    alt: "Altanbygge utfört av snickare i Borås och Svenljunga",
     featured: true
   },
   {
     src: "/reference-fasad-white-outbuilding.jpg",
-    alt: "Ljus träfasad och takdetaljer på komplementbyggnad"
+    alt: "Fasadrenovering utförd av snickare i Borås och Svenljunga"
   },
   {
-    src: "/reference-altan-evening.jpg",
-    alt: "Altan med infälld kvällsbelysning"
+    src: referenceAltanEvening,
+    alt: "Altanbygge med belysning utfört av snickare i Borås och Svenljunga"
   },
   {
     src: "/service-about-fasad.webp",
-    alt: "Utfört fasadarbete på villa"
+    alt: "Fasadrenovering på villa i Borås och Svenljunga"
   },
   {
     src: "/service-about-uterum.webp",
-    alt: "Uterum med trädetaljer"
+    alt: "Uterum med trädetaljer byggt i Borås och Svenljunga"
   },
   {
     src: "/service-ref-new.webp",
-    alt: "Referensbild från utfört snickeriarbete"
+    alt: "Referensbild från snickeriarbete i Borås och Svenljunga"
   },
   {
     src: "/614374637ac319ed0e56d8fc.webp",
-    alt: "Altanbygge med trätrall"
+    alt: "Altanbygge med trätrall i Borås och Svenljunga"
   },
   {
     src: "/614375647ac319ed0e56d905.webp",
-    alt: "Detaljbild från utfört snickeriarbete"
+    alt: "Detaljbild från snickeriarbete i Borås och Svenljunga"
   },
   {
     src: "/6143762d4d2345a2251cc83d.webp",
-    alt: "Färdigt snickeriprojekt vid hus"
+    alt: "Färdigt snickeriprojekt vid hus i Borås och Svenljunga"
   },
   {
     src: "/709d06fbbb16a3cd3e6b4d68fcf7094e40095ae8.webp",
-    alt: "Referensbild från färdigt arbete"
+    alt: "Referensbild från färdigt arbete i Borås och Svenljunga"
   },
   {
     src: "/altan.webp",
-    alt: "Träaltan som referensprojekt"
+    alt: "Träaltan byggd av snickare i Borås och Svenljunga"
   }
 ];
 
@@ -86,12 +89,22 @@ const breadcrumbSchema = {
     <div class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {galleryImages.map((image) => (
         <figure class={`overflow-hidden rounded-[1.75rem] border border-surface-container-high bg-surface-container-low shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl ${image.featured ? "aspect-[4/3] sm:col-span-2 sm:aspect-[16/9]" : "aspect-[4/3]"}`}>
-          <img
-            src={image.src}
-            alt={image.alt}
-            class="h-full w-full object-cover"
-            loading="lazy"
-          />
+          {typeof image.src === "string" ? (
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <Image
+              src={image.src}
+              format="webp"
+              alt={image.alt}
+              class="h-full w-full object-cover"
+              loading="lazy"
+            />
+          )}
         </figure>
       ))}
     </div>

@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CtaPanel from "../components/CtaPanel.astro";
 import Testimonials from "../components/Testimonials.astro";
+import heroSwedishHouse from "../assets/seo/hero_swedish_house.png";
 import {
   serviceDetails,
   projectCases,
@@ -58,7 +60,12 @@ const reviewSchema = {
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">
     <div class="absolute inset-0 opacity-40">
-      <img class="w-full h-full object-cover" alt="Vackert trädhus i Sverige som representerar professionellt snickeriarbete" src="/hero_swedish_house.png" />
+      <Image
+        src={heroSwedishHouse}
+        format="webp"
+        class="w-full h-full object-cover"
+        alt="Snickeriarbete på trähus i Borås och Svenljunga"
+      />
       <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
     </div>
     <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 z-10">
@@ -137,7 +144,7 @@ const reviewSchema = {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div class="relative overflow-hidden md:overflow-visible">
           <div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary-container rounded-full blur-3xl"></div>
-          <img class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" alt="Fasadrenovering utförd av professionell snickare" src="/service-about-fasad.webp" />
+          <img class="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-[4/5]" alt="Fasadrenovering utförd av snickare i Borås" src="/service-about-fasad.webp" />
           <div class="absolute -bottom-8 -right-8 bg-surface-container-lowest p-8 rounded-2xl shadow-xl z-20 hidden md:block border border-outline-variant/10">
             <p class="text-secondary text-4xl font-extrabold mb-1">Metod &</p>
             <p class="text-on-surface font-bold text-sm uppercase tracking-wider">Trygg Leverans</p>

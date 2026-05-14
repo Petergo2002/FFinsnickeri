@@ -1,7 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import { testimonials } from "../data/site";
+import referenceAltanDarkHouse from "../assets/seo/reference-altan-dark-house.jpg";
+import referenceAltanEvening from "../assets/seo/reference-altan-evening.jpg";
 
 const carouselTestimonials = [...testimonials, ...testimonials];
+const optimizedTestimonialImages = {
+  "/reference-altan-dark-house.jpg": referenceAltanDarkHouse,
+  "/reference-altan-evening.jpg": referenceAltanEvening
+};
 ---
 
 <section class="py-32 bg-surface">
@@ -67,11 +74,20 @@ const carouselTestimonials = [...testimonials, ...testimonials];
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
         {testimonials.flatMap(t => t.images).slice(0, 5).map((img, i) => (
           <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-lg">
-            <img 
-              src={img} 
-              alt={`Projektbild ${i + 1}`} 
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
+            {optimizedTestimonialImages[img] ? (
+              <Image
+                src={optimizedTestimonialImages[img]}
+                format="webp"
+                alt={`Referensbild från snickeriprojekt i Borås och Svenljunga ${i + 1}`}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : (
+              <img 
+                src={img} 
+                alt={`Referensbild från snickeriprojekt i Borås och Svenljunga ${i + 1}`} 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            )}
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
               <span class="text-white text-[10px] font-bold uppercase tracking-wider">Utfört arbete</span>
             </div>

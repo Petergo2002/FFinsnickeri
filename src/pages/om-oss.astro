@@ -1,7 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { coreServices, secondaryCategories, siteConfig, trustPoints } from "../data/site";
 import CtaPanel from "../components/CtaPanel.astro";
+import aboutHero from "../assets/seo/about_hero.png";
+import swedishHouses from "../assets/seo/swedish_houses.png";
 
 const values = [
   {
@@ -62,10 +65,11 @@ const breadcrumbSchema = {
   <!-- Premium Hero Section -->
   <section class="relative flex min-h-[520px] items-center overflow-hidden bg-primary py-20 text-on-primary sm:min-h-[600px] sm:py-0">
     <div class="absolute inset-0 opacity-40">
-      <img 
+      <Image 
         class="w-full h-full object-cover" 
-        src="/images/about_hero.png" 
-        alt="Realistisk bild av ett välskött hem med genomtänkta snickeridetaljer" 
+        src={aboutHero}
+        format="webp"
+        alt="Villa med snickeridetaljer i Borås och Svenljunga" 
       />
       <div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent"></div>
     </div>
@@ -160,10 +164,11 @@ const breadcrumbSchema = {
         <div class="relative order-1 overflow-hidden md:overflow-visible lg:order-2">
           <div class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl"></div>
           <div class="relative z-10 rounded-[2.5rem] overflow-hidden shadow-2xl aspect-square">
-            <img 
+            <Image 
               class="w-full h-full object-cover" 
-              src="/images/swedish_houses.png" 
-              alt="Vackra svenska trähus i harmonisk miljö som representerar vår hantverkskvalitet" 
+              src={swedishHouses}
+              format="webp"
+              alt="Svenska trähus som visar hantverkskvalitet i Borås och Svenljunga" 
             />
           </div>
           <div class="absolute -bottom-8 -left-8 bg-surface-container-lowest p-8 rounded-2xl shadow-xl z-20 border border-outline-variant/10 hidden md:block">
