@@ -8,10 +8,10 @@ interface Props {
 const { item } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 
-// Base Organization Schema
+// Base organization schema shared across the site.
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
   "@id": `${siteUrl}/#organization`,
   "name": siteConfig.businessName,
   "url": siteUrl,
@@ -26,7 +26,7 @@ const organizationSchema = {
   "address": {
     "@type": "PostalAddress",
     "streetAddress": siteConfig.address,
-    "addressLocality": siteConfig.city,
+    "addressLocality": "Borås",
     "addressRegion": "Västra Götaland",
     "postalCode": "512 91",
     "addressCountry": "SE"
@@ -39,6 +39,7 @@ const organizationSchema = {
   "telephone": siteConfig.primaryPhone,
   "email": siteConfig.primaryEmail,
   "priceRange": "$$",
+  "openingHours": "Mo-Fr 07:00-17:00",
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -50,8 +51,8 @@ const organizationSchema = {
   "areaServed": [
     { "@type": "City", "name": "Borås" },
     { "@type": "City", "name": "Svenljunga" },
-    { "@type": "City", "name": "Östra Frölunda" },
-    { "@type": "City", "name": "Göteborg" }
+    { "@type": "City", "name": "Göteborg" },
+    { "@type": "City", "name": "Ulricehamn" }
   ]
 };
 

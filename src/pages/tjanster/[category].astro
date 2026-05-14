@@ -26,11 +26,39 @@ interface Props {
 const { category } = Astro.props;
 const children = getCategoryChildren(category.slug);
 const relatedCoreServices = getCategoryRelatedCoreServices(category.slug);
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tjänster",
+      item: `${siteUrl}/tjanster/`
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: category.name,
+      item: currentUrl
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title={`${category.name} | ${siteConfig.businessName}`}
   description={`${category.name} i ${siteConfig.city} från ${siteConfig.businessName}.`}
+  schema={breadcrumbSchema}
 >
   <div class="flex flex-col gap-16 pb-24 md:gap-24">
     <PageHero

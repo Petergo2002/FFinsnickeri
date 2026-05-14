@@ -4,9 +4,35 @@ import CtaPanel from "../../components/CtaPanel.astro";
 import PageHero from "../../components/PageHero.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 import { areas, siteConfig } from "../../data/site";
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Verksamhetsområden",
+      item: currentUrl
+    }
+  ]
+};
 ---
 
-<BaseLayout title={`Verksamhetsområden | ${siteConfig.businessName}`} description={`Områden där ${siteConfig.businessName} arbetar.`}>
+<BaseLayout
+  title={`Verksamhetsområden | ${siteConfig.businessName}`}
+  description={`Områden där ${siteConfig.businessName} arbetar.`}
+  schema={breadcrumbSchema}
+>
   <div class="flex flex-col gap-16 pb-24 md:gap-24">
     <PageHero
       eyebrow="Verksamhetsområden"

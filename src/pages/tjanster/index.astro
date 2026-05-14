@@ -2,9 +2,35 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { serviceDetails, siteConfig } from "../../data/site";
 import CtaPanel from "../../components/CtaPanel.astro";
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Tjänster",
+      item: currentUrl
+    }
+  ]
+};
 ---
 
-<BaseLayout title={`Tjänster | ${siteConfig.businessName}`} description={`Fasadrenovering, altanbygge och uterum från ${siteConfig.businessName}`}>
+<BaseLayout
+  title={`Tjänster | ${siteConfig.businessName}`}
+  description={`Fasadrenovering, altanbygge och uterum från ${siteConfig.businessName}`}
+  schema={breadcrumbSchema}
+>
   <!-- Hero Section -->
   <section class="relative bg-surface-container-low overflow-hidden py-24 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-12 items-center gap-12">

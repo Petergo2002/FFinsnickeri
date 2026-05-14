@@ -30,11 +30,34 @@ const stats = [
   { label: "Områden", value: "2" },
   { label: "Område", value: siteConfig.city }
 ];
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Hem",
+      item: siteUrl
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Om oss",
+      item: currentUrl
+    }
+  ]
+};
 ---
 
 <BaseLayout 
   title={`Om oss | ${siteConfig.businessName}`} 
   description={`Lär känna ${siteConfig.businessName} i ${siteConfig.city}. Vi hjälper dig med fasadrenovering, altanbygge och uterum.`}
+  schema={breadcrumbSchema}
 >
   <!-- Premium Hero Section -->
   <section class="relative flex min-h-[520px] items-center overflow-hidden bg-primary py-20 text-on-primary sm:min-h-[600px] sm:py-0">

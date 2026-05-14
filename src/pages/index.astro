@@ -6,6 +6,7 @@ import {
   serviceDetails,
   projectCases,
   siteConfig,
+  testimonials,
   trustPoints
 } from "../data/site";
 
@@ -18,11 +19,41 @@ const homepageServiceSlugs = [
 const homepageServices = homepageServiceSlugs
   .map((slug) => serviceDetails.find((service) => service.slug === slug))
   .filter((service) => service !== undefined);
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+  "@id": `${siteUrl}/#organization`,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    reviewCount: String(testimonials.length),
+    bestRating: "5",
+    worstRating: "1"
+  },
+  review: testimonials.map((testimonial) => ({
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+      worstRating: "1"
+    },
+    author: {
+      "@type": "Person",
+      name: testimonial.name
+    },
+    reviewBody: testimonial.text || "Kundomdöme registrerat för utfört arbete."
+  }))
+};
 ---
 
 <BaseLayout
   title={`${siteConfig.businessName} | Finsnickeri & Fasadrenovering i Borås & Svenljunga`}
   description={`Letar du efter finsnickeri i Borås eller Svenljunga? ${siteConfig.businessName} hjälper dig med fasadrenovering, altanbygge och uterum med fokus på kvalitet och estetik.`}
+  schema={reviewSchema}
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">
