@@ -398,13 +398,13 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-fasad.webp",
     aboutImage: "/service-about-fasad.webp",
     accent: "orange",
-    seoTitle: "Fasadrenovering i Borås & Svenljunga",
+    seoTitle: "Fasadrenovering Borås & Svenljunga | F.Finsnickeri",
     seoDescription:
-      "F.Finsnickeri hjälper dig med fasadrenovering i Borås och Svenljunga med fokus på hållbarhet, husets karaktär och ett slutresultat som håller över tid.",
+      "Fasadrenovering i Borås och Svenljunga med fokus på materialkvalitet, lokal erfarenhet och hållbara resultat. Begär gratis offert från F.Finsnickeri.",
     areaSeoDescription:
       "Vi renoverar fasader med fokus på hållbarhet, tydlig planering och ett uttryck som passar husets arkitektur.",
     heroSubtitle:
-      "Vi renoverar fasader med fokus på kvalitet, estetik och ett resultat som lyfter husets helhet.",
+      "Vi renoverar fasader i Borås och Svenljunga med fokus på materialkvalitet, lokal erfarenhet och ett resultat som håller över tid.",
     about: [
       "F.Finsnickeri verkstaden är en sammanslutning av snickare med tiotals års erfarenhet av kvalitet, estetik och kundvärde. I fasadrenovering betyder det att vi ser till både detaljerna och helheten.",
       "Vårt mål är att förse våra kunder med vacker och användbar design för deras hem. När vi renoverar en fasad arbetar vi för att betona husets karaktär och skapa en harmonisk helhet.",
@@ -454,13 +454,13 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-altan.webp",
     aboutImage: "/614374637ac319ed0e56d8fc.webp",
     accent: "amber",
-    seoTitle: "Altanbygge i Borås & Svenljunga",
+    seoTitle: "Altanbygge Borås & Svenljunga | F.Finsnickeri",
     seoDescription:
-      "F.Finsnickeri bygger altaner i Borås och Svenljunga med fokus på funktion, helhetsintryck och en lösning som fungerar för hur du vill använda uteplatsen.",
+      "Altanbygge i Borås och Svenljunga med skräddarsydd form, naturmaterial och genomtänkt estetik. Be om gratis offert från F.Finsnickeri.",
     areaSeoDescription:
       "Vi bygger altaner som planeras efter platsens förutsättningar, husets uttryck och hur ytan ska användas i vardagen.",
     heroSubtitle:
-      "Vi bygger altaner som ger hemmet en naturlig samlingsplats och en vacker övergång till utemiljön.",
+      "Vi bygger skräddarsydda altaner i Borås och Svenljunga med naturmaterial, genomtänkta proportioner och estetik som lyfter hemmet.",
     about: [
       "Vi hjälper kunder att skapa altaner som är lika användbara som estetiskt genomtänkta. Varje projekt planeras efter hur platsen ska användas i vardagen.",
       "Vårt mål är att förse våra kunder med design som lyfter hemmet och skapar mer harmoni mellan hus, trädgård och sociala ytor.",
@@ -510,13 +510,13 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-uterum.webp",
     aboutImage: "/service-about-uterum.webp",
     accent: "blue",
-    seoTitle: "Uterum i Borås & Svenljunga",
+    seoTitle: "Uterum Borås & Svenljunga | F.Finsnickeri",
     seoDescription:
-      "F.Finsnickeri bygger uterum i Borås och Svenljunga med fokus på ljus, komfort och en genomtänkt övergång mellan hemmet och utemiljön.",
+      "Uterum i Borås och Svenljunga med stort ljusinsläpp, helårskänsla och skräddarsydd utformning. Kontakta F.Finsnickeri för gratis offert.",
     areaSeoDescription:
       "Vi bygger uterum som skapar mer ljus, fler användbara månader och en naturlig koppling mellan inne och ute.",
     heroSubtitle:
-      "Vi bygger uterum som skapar mer ljus, mer plats och en lugn övergång mellan inne och ute.",
+      "Vi bygger skräddarsydda uterum i Borås och Svenljunga med generöst ljusinsläpp, helårsuterum som mål och en naturlig koppling till huset.",
     about: [
       "Ett uterum ska inte bara ge fler kvadratmeter utan också mer vardagskvalitet. Därför planerar vi varje projekt med fokus på känsla, funktion och hur rummet ska användas.",
       "Vi vill skapa lösningar som betonar hemmets skönhet och harmoni. Ett uterum ska kännas som en naturlig del av huset och ge plats för både stillhet och sociala stunder.",

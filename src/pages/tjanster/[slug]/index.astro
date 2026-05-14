@@ -69,7 +69,7 @@ const serviceSchema = {
 ---
 
 <BaseLayout
-  title={`${service.seoTitle} | ${siteConfig.businessName}`}
+  title={service.seoTitle}
   description={service.seoDescription}
   image={service.image}
   schema={[breadcrumbSchema, serviceSchema]}
@@ -93,7 +93,7 @@ const serviceSchema = {
         
         <span class="inline-block py-1 px-3 mb-6 bg-[#CD061F] text-white text-xs font-bold tracking-widest rounded-full uppercase">Tjänst</span>
         <h1 class="font-headline text-4xl sm:text-5xl md:text-7xl font-extrabold text-white tracking-tighter mb-6 leading-[1.1]">
-          {service.name}
+          {service.name} i Borås & Svenljunga
         </h1>
         <p class="text-lg sm:text-xl text-white/90 mb-10 font-light leading-relaxed">
           {service.heroSubtitle}
