@@ -36,7 +36,14 @@ const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 // SEO-optimized title and description specific to this service+area combo
 const pageTitle = `${service.name} i ${area.name} | ${siteConfig.businessName}`;
-const pageDescription = `${siteConfig.businessName} hjälper dig med ${service.name.toLowerCase()} i ${area.name}. ${service.areaSeoDescription} Kontakta oss för kostnadsfri offert och rådgivning.`;
+const localDescriptions: Record<string, string> = {
+  fasadrenovering: `Ge huset ett starkare första intryck. Vi hjälper dig med fasadrenovering i ${area.name} med tydlig planering, noggrant utförande och kostnadsfri offert.`,
+  altanbygge: `Planerar du altan i ${area.name}? Vi bygger altaner som passar hus, tomt och budget. Trygg process och kostnadsfri offert.`,
+  uterum: `Vill du förlänga säsongen med uterum i ${area.name}? Vi hjälper dig med planering, bygge och kostnadsfri offert.`
+};
+const pageDescription =
+  localDescriptions[service.slug] ??
+  `Behöver du hjälp med ${service.name.toLowerCase()} i ${area.name}? ${siteConfig.businessName} hjälper dig med tydlig planering, noggrant utförande och kostnadsfri offert.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",

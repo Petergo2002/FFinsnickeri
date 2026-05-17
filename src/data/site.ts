@@ -64,7 +64,7 @@ export const siteConfig = {
   mainCategory: "Finsnickeri",
   city: "Östra Frölunda",
   defaultDescription:
-    "F.Finsnickeri i Östra Frölunda hjälper kunder i Borås och Svenljunga med fasadrenovering, altanbygge och uterum.",
+    "Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg. Trygg process, ROT-avdrag och kostnadsfri offert.",
   primaryPhone: "072-554 77 17",
   primaryEmail: "f.finsnickeri@gmail.com",
   address: "Östra Frölunda",
@@ -398,9 +398,9 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-fasad.webp",
     aboutImage: "/service-about-fasad.webp",
     accent: "orange",
-    seoTitle: "Fasadrenovering Borås & Svenljunga | F.Finsnickeri",
+    seoTitle: "Fasadrenovering i Borås | F.Finsnickeri",
     seoDescription:
-      "Fasadrenovering i Borås och Svenljunga med fokus på materialkvalitet, lokal erfarenhet och hållbara resultat. Begär gratis offert från F.Finsnickeri.",
+      "Behöver fasaden nytt liv? Vi renoverar träfasader i Borås och Svenljunga med noggrant hantverk, tydlig planering och kostnadsfri offert.",
     areaSeoDescription:
       "Vi renoverar fasader med fokus på hållbarhet, tydlig planering och ett uttryck som passar husets arkitektur.",
     heroSubtitle:
@@ -454,9 +454,9 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-altan.webp",
     aboutImage: "/614374637ac319ed0e56d8fc.webp",
     accent: "amber",
-    seoTitle: "Altanbygge Borås & Svenljunga | F.Finsnickeri",
+    seoTitle: "Altanbygge i Borås & Svenljunga | F.Finsnickeri",
     seoDescription:
-      "Altanbygge i Borås och Svenljunga med skräddarsydd form, naturmaterial och genomtänkt estetik. Be om gratis offert från F.Finsnickeri.",
+      "Bygg en altan som passar huset, tomten och vardagen. F.Finsnickeri hjälper dig från idé till färdig altan. Kostnadsfri offert.",
     areaSeoDescription:
       "Vi bygger altaner som planeras efter platsens förutsättningar, husets uttryck och hur ytan ska användas i vardagen.",
     heroSubtitle:
@@ -510,9 +510,9 @@ export const serviceDetails: ServiceDetail[] = [
     image: "/service-hero-uterum.webp",
     aboutImage: "/service-about-uterum.webp",
     accent: "blue",
-    seoTitle: "Uterum Borås & Svenljunga | F.Finsnickeri",
+    seoTitle: "Bygga uterum i Borås & Svenljunga | F.Finsnickeri",
     seoDescription:
-      "Uterum i Borås och Svenljunga med stort ljusinsläpp, helårskänsla och skräddarsydd utformning. Kontakta F.Finsnickeri för gratis offert.",
+      "Få ett ljusare hem och längre utesäsong med ett måttanpassat uterum. Erfaren snickare, trygg process och kostnadsfri offert.",
     areaSeoDescription:
       "Vi bygger uterum som skapar mer ljus, fler användbara månader och en naturlig koppling mellan inne och ute.",
     heroSubtitle:
