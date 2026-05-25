@@ -94,6 +94,37 @@ const serviceSchema = {
   }
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: `Utför ni ${service.name.toLowerCase()} i ${area.name}?`,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `Ja, ${siteConfig.businessName} hjälper kunder i ${area.name} med ${service.name.toLowerCase()} när projektets omfattning och tidsplan passar vårt arbetsområde.`
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Hur får jag en offert?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Kontakta oss med adressområde, bilder och en kort beskrivning av projektet. Vi återkommer med nästa steg och offertupplägg."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Vilka andra snickeritjänster erbjuder ni i området?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: `${siteConfig.businessName} hjälper med fasadrenovering, altanbygge och uterum i ${area.name} och närliggande områden.`
+      }
+    }
+  ]
+};
+
 // Pick a testimonial to show on this page
 const testimonial = testimonials[0];
 
@@ -110,7 +141,7 @@ const heroImage = service.image;
   title={pageTitle}
   description={pageDescription}
   image={service.image}
-  schema={[breadcrumbSchema, serviceSchema]}
+  schema={[breadcrumbSchema, serviceSchema, faqSchema]}
 >
 
   <!-- Hero Section -->
@@ -164,6 +195,7 @@ const heroImage = service.image;
         <div class="space-y-6 text-on-surface-variant text-lg leading-relaxed text-left max-w-3xl mx-auto">
           <p>{localIntro}</p>
           <p>{area.summary}</p>
+          <p>{area.coverageNote}</p>
           <p>{service.about[0]}</p>
         </div>
         <a href="/kontakt" class="mt-12 inline-flex items-center gap-2 bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dim transition-all shadow-lg">
@@ -220,7 +252,7 @@ const heroImage = service.image;
               </div>
               <div>
                 <h4 class="text-lg font-bold text-on-surface">{testimonial.name}</h4>
-                <p class="text-secondary-dim font-medium uppercase tracking-widest text-xs">{testimonial.role} · {area.name}</p>
+                <p class="text-secondary-dim font-medium uppercase tracking-widest text-xs">{testimonial.role}</p>
               </div>
             </div>
           </div>
@@ -241,7 +273,7 @@ const heroImage = service.image;
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                  <span class="text-white text-xs font-bold uppercase tracking-wider">Utfört i {area.name}</span>
+                  <span class="text-white text-xs font-bold uppercase tracking-wider">Referensarbete</span>
                 </div>
               </div>
             ))}
@@ -278,6 +310,65 @@ const heroImage = service.image;
     </section>
   )}
 
+  <section class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 gap-10 lg:grid-cols-3">
+        <div>
+          <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Lokalt upplägg</span>
+          <h2 class="font-headline text-3xl font-bold text-on-surface">Så hjälper vi kunder i {area.name}</h2>
+        </div>
+        <div class="lg:col-span-2 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <article class="rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm">
+            <h3 class="text-xl font-bold text-on-surface mb-3">Tillgänglighet</h3>
+            <p class="text-secondary-dim leading-relaxed">{area.responseNote}</p>
+          </article>
+          <article class="rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm">
+            <h3 class="text-xl font-bold text-on-surface mb-3">Underlag och referenser</h3>
+            <p class="text-secondary-dim leading-relaxed">{area.localProof}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="mb-12 text-center">
+        <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Vanliga frågor</span>
+        <h2 class="font-headline text-4xl font-bold text-on-surface">Frågor om {service.name.toLowerCase()} i {area.name}</h2>
+      </div>
+      <div class="divide-y divide-outline-variant/20 rounded-2xl border border-outline-variant/10 bg-surface-container-lowest">
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
+            Utför ni {service.name.toLowerCase()} i {area.name}?
+            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-on-surface-variant leading-relaxed">
+            Ja, vi hjälper kunder i {area.name} med {service.name.toLowerCase()} när projektets omfattning och tidsplan passar vårt arbetsområde.
+          </p>
+        </details>
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
+            Hur får jag en offert?
+            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-on-surface-variant leading-relaxed">
+            Kontakta oss med adressområde, bilder och en kort beskrivning av projektet. Vi återkommer med nästa steg och offertupplägg.
+          </p>
+        </details>
+        <details class="group p-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
+            Vilka andra snickeritjänster erbjuder ni i området?
+            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+          </summary>
+          <p class="mt-4 text-on-surface-variant leading-relaxed">
+            Vi hjälper med fasadrenovering, altanbygge och uterum i {area.name} och närliggande områden.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- Other areas this service covers -->
   <section class="py-20 bg-surface">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -296,6 +387,30 @@ const heroImage = service.image;
             }`}
           >
             {service.name} i {a.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mb-12 text-center">
+        <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Fler tjänster i {area.name}</span>
+        <h2 class="font-headline text-3xl font-bold text-on-surface">Jämför andra snickeritjänster i området</h2>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {serviceDetails.filter((item) => item.slug !== service.slug).map((relatedService) => (
+          <a
+            href={`/tjanster/${relatedService.slug}/${area.slug}`}
+            class="group rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm transition-all hover:border-secondary/30 hover:shadow-lg"
+          >
+            <h3 class="text-xl font-bold text-on-surface transition-colors group-hover:text-secondary">{relatedService.name} i {area.name}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-secondary-dim">{relatedService.areaSeoDescription}</p>
+            <div class="mt-6 flex items-center text-sm font-bold uppercase tracking-wider text-secondary">
+              Läs mer
+              <span class="material-symbols-outlined ml-1 text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </div>
           </a>
         ))}
       </div>

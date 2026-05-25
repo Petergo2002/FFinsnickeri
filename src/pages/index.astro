@@ -7,7 +7,6 @@ import heroSwedishHouse from "../assets/seo/hero_swedish_house.png";
 import {
   serviceDetails,
   siteConfig,
-  testimonials,
   trustPoints
 } from "../data/site";
 
@@ -23,38 +22,23 @@ const homepageServices = homepageServiceSlugs
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 
-const reviewSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-  "@id": `${siteUrl}/#organization`,
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5",
-    reviewCount: String(testimonials.length),
-    bestRating: "5",
-    worstRating: "1"
-  },
-  review: testimonials.map((testimonial) => ({
-    "@type": "Review",
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: "5",
-      bestRating: "5",
-      worstRating: "1"
-    },
-    author: {
-      "@type": "Person",
-      name: testimonial.name
-    },
-    reviewBody: testimonial.text || "Kundomdöme registrerat för utfört arbete."
-  }))
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: siteConfig.businessName,
+  url: siteUrl,
+  inLanguage: "sv-SE",
+  publisher: {
+    "@id": `${siteUrl}/#organization`
+  }
 };
 ---
 
 <BaseLayout
   title="Snickare i Borås & Svenljunga | F.Finsnickeri"
   description="Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg. Trygg process, ROT-avdrag och kostnadsfri offert."
-  schema={reviewSchema}
+  schema={websiteSchema}
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">

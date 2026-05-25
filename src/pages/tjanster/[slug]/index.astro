@@ -61,11 +61,20 @@ const serviceSchema = {
   provider: {
     "@id": `${siteUrl}/#organization`
   },
-  areaServed: [
-    { "@type": "City", name: "Borås" },
-    { "@type": "City", name: "Svenljunga" },
-    { "@type": "City", name: "Göteborg" }
-  ]
+  areaServed: areas.map((area) => ({ "@type": "City", name: area.name }))
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: service.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
 };
 ---
 
@@ -73,7 +82,7 @@ const serviceSchema = {
   title={service.seoTitle}
   description={service.seoDescription}
   image={service.image}
-  schema={[breadcrumbSchema, serviceSchema]}
+  schema={[breadcrumbSchema, serviceSchema, faqSchema]}
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[620px] flex-col justify-center overflow-hidden bg-primary pt-16 pb-12 md:h-[716px] md:py-0">
@@ -178,6 +187,26 @@ const serviceSchema = {
       </div>
     </section>
   )}
+
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="mb-12 text-center">
+        <span class="text-sm font-bold tracking-[0.2em] text-outline uppercase block mb-4">Vanliga frågor</span>
+        <h2 class="font-headline text-4xl font-bold text-on-surface">Frågor om {service.name.toLowerCase()}</h2>
+      </div>
+      <div class="divide-y divide-outline-variant/20 rounded-2xl border border-outline-variant/10 bg-surface-container-lowest">
+        {service.faqs.map((faq) => (
+          <details class="group p-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
+              {faq.question}
+              <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+            </summary>
+            <p class="mt-4 max-w-3xl text-on-surface-variant leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Areas we work in -->
   <section class="py-24 bg-surface-container-low overflow-hidden">

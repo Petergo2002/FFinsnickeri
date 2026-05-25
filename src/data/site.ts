@@ -32,6 +32,9 @@ export interface Area {
   slug: string;
   name: string;
   summary: string;
+  coverageNote: string;
+  localProof: string;
+  responseNote: string;
   hasNoPage?: boolean;
 }
 
@@ -203,18 +206,36 @@ export const areas: Area[] = [
     slug: "boras",
     name: "Borås",
     summary:
-      "Vi hjälper kunder i Borås med fasadrenovering, altanbygge och uterum med fokus på kvalitet, estetik och kundvärde."
+      "Vi hjälper kunder i Borås med fasadrenovering, altanbygge och uterum med fokus på kvalitet, estetik och kundvärde.",
+    coverageNote:
+      "Borås är ett av våra viktigaste arbetsområden för villaägare som vill renovera fasad, bygga altan eller skapa ett mer användbart uterum.",
+    localProof:
+      "Vi visar referensjobb från Borås och närliggande orter så att du kan bedöma stil, materialkänsla och utförande innan du begär offert.",
+    responseNote:
+      "Från Östra Frölunda planerar vi hembesök och offertunderlag i Borås med tydlig dialog om omfattning, material och tidsplan."
   },
   {
     slug: "svenljunga",
     name: "Svenljunga",
     summary:
-      "I Svenljunga utför vi snickeriprojekt som skapar vackra och användbara lösningar för hem och utemiljö."
+      "I Svenljunga utför vi snickeriprojekt som skapar vackra och användbara lösningar för hem och utemiljö.",
+    coverageNote:
+      "Svenljunga ligger nära vår bas och passar väl för uppdrag där snabb dialog, personlig planering och noggrant snickeriarbete är viktigt.",
+    localProof:
+      "Vi arbetar med projekt som ska kännas rätt för husets uttryck och platsens förutsättningar, från fasaddetaljer till altan och uterum.",
+    responseNote:
+      "Berätta var i Svenljunga projektet finns och vad du vill få gjort, så återkommer vi med nästa steg och ett upplägg för offert."
   },
   {
     slug: "goteborg",
     name: "Göteborg",
-    summary: "Vi hjälper kunder i Göteborg med omnejd med professionella snickeriprojekt, från altaner till fasadrenovering."
+    summary: "Vi hjälper kunder i Göteborg med omnejd med professionella snickeriprojekt, från altaner till fasadrenovering.",
+    coverageNote:
+      "För Göteborg med omnejd tar vi uppdrag där projektets omfattning, plats och tidsplan passar vår kapacitet och arbetssätt.",
+    localProof:
+      "Vi hjälper kunder som söker ett mindre, kvalitetsdrivet snickeriteam snarare än en anonym entreprenadkedja.",
+    responseNote:
+      "Skicka gärna adressområde, bilder och kort projektbeskrivning för Göteborgsprojekt, så kan vi snabbt bedöma upplägg och tillgänglighet."
   }
 ];
 
@@ -375,6 +396,11 @@ export interface ProcessStep {
   body: string;
 }
 
+export interface ServiceFaq {
+  question: string;
+  answer: string;
+}
+
 export interface ServiceDetail {
   slug: string;
   name: string;
@@ -386,6 +412,7 @@ export interface ServiceDetail {
   about: string[];
   usps: ServiceUsp[];
   processSteps: ProcessStep[];
+  faqs: ServiceFaq[];
   iconPath: string;
   image: string;
   aboutImage: string;
@@ -446,6 +473,23 @@ export const serviceDetails: ServiceDetail[] = [
         body: "Du får en förnyad fasad som känns genomtänkt, vacker och användbar över tid."
       }
     ],
+    faqs: [
+      {
+        question: "När är det dags att renovera fasaden?",
+        answer:
+          "Det är ofta dags att planera fasadrenovering när träet är sprucket, färgen släpper, detaljer känns slitna eller huset behöver ett tydligare helhetslyft."
+      },
+      {
+        question: "Kan ni hjälpa till med både mindre detaljer och större fasadprojekt?",
+        answer:
+          "Ja, vi går igenom fasadens skick och föreslår ett upplägg som passar behov, budget och husets karaktär."
+      },
+      {
+        question: "Utför ni fasadrenovering i Borås och Svenljunga?",
+        answer:
+          "Ja, vi utgår från Östra Frölunda och hjälper kunder i Borås, Svenljunga och närliggande områden med fasadrenovering."
+      }
+    ],
     iconPath: "M4 5h16M4 12h16M4 19h16"
   },
   {
@@ -500,6 +544,23 @@ export const serviceDetails: ServiceDetail[] = [
       {
         title: "Klar att använda",
         body: "Du får en färdig altan som gör hemmet mer inbjudande och utemiljön mer användbar."
+      }
+    ],
+    faqs: [
+      {
+        question: "Vad påverkar priset för ett altanbygge?",
+        answer:
+          "Storlek, höjd, markförhållanden, materialval, räcke, trappor och anslutning mot huset påverkar kostnaden. Vi tar fram offert efter platsens förutsättningar."
+      },
+      {
+        question: "Kan ni anpassa altanen efter huset och tomten?",
+        answer:
+          "Ja, altanen planeras efter husets uttryck, sol, nivåskillnader, rörelsemönster och hur ytan ska användas i vardagen."
+      },
+      {
+        question: "Bygger ni altaner i Borås, Svenljunga och Göteborg?",
+        answer:
+          "Ja, vi bygger altaner i Borås och Svenljunga och tar även passande uppdrag i Göteborg med omnejd."
       }
     ],
     iconPath: "M3 20h18M5 20V8l7-4 7 4v12"
@@ -558,6 +619,23 @@ export const serviceDetails: ServiceDetail[] = [
         body: "Du får ett uterum som skapar mer trivsel, fler användbara månader och ett tydligt mervärde i hemmet."
       }
     ],
+    faqs: [
+      {
+        question: "Vad bör jag tänka på innan jag bygger uterum?",
+        answer:
+          "Fundera på hur många månader om året uterummet ska användas, hur det ska ansluta till huset och vilken känsla, ljusnivå och budget du vill ha."
+      },
+      {
+        question: "Kan uterummet anpassas efter husets stil?",
+        answer:
+          "Ja, vi planerar proportioner, material och detaljer så att uterummet känns som en naturlig del av huset."
+      },
+      {
+        question: "Utför ni uterum i Borås och Svenljunga?",
+        answer:
+          "Ja, vi hjälper kunder i Borås, Svenljunga och närliggande områden med planering och byggnation av uterum."
+      }
+    ],
     iconPath: "M3 20h18M5 20V7h14v13M9 7V4h6v3"
   }
 ];
@@ -592,10 +670,10 @@ export function getCategoryRelatedCoreServices(categorySlug: string) {
 
 export function getServiceAreaPaths() {
   return areas.flatMap((area) =>
-    [...coreServices, ...childServices].map((service) => ({
+    serviceDetails.map((service) => ({
       area,
       service,
-      slug: `/omraden/${area.slug}/${service.slug}`
+      slug: `/tjanster/${service.slug}/${area.slug}`
     }))
   );
 }

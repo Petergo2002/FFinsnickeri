@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { coreServices, secondaryCategories, siteConfig, trustPoints } from "../data/site";
+import { areas, coreServices, secondaryCategories, siteConfig, trustPoints } from "../data/site";
 import CtaPanel from "../components/CtaPanel.astro";
 import aboutHero from "../assets/seo/about_hero.png";
 import swedishHouses from "../assets/seo/swedish_houses.png";
@@ -30,7 +30,7 @@ const values = [
 const stats = [
   { label: "Erfarenhet", value: "Tiotals år" },
   { label: "Tjänster", value: "3" },
-  { label: "Områden", value: "2" },
+  { label: "Områden", value: String(areas.length) },
   { label: "Område", value: siteConfig.city }
 ];
 
