@@ -67,14 +67,14 @@ export const siteConfig = {
   mainCategory: "Finsnickeri",
   city: "Östra Frölunda",
   defaultDescription:
-    "Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg. Trygg process, ROT-avdrag och kostnadsfri offert.",
+    "Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga, Göteborg med omnejd. Trygg process, ROT-avdrag och kostnadsfri offert.",
   primaryPhone: "072-554 77 17",
   primaryEmail: "f.finsnickeri@gmail.com",
   address: "Östra Frölunda",
   hours: "Ring eller mejla för att boka tid",
   responseTime: "Snabb återkoppling",
   experience: "Tiotals års erfarenhet",
-  serviceAreaLabel: "Borås, Svenljunga och Göteborg",
+  serviceAreaLabel: "Borås, Svenljunga, Göteborg, Ulricehamn och Härryda",
   footerNote:
     "F.Finsnickeri verkstaden är en sammanslutning av snickare med tiotals års erfarenhet av kvalitet, estetik och kundvärde. Hör av dig så hjälper vi dig med ditt nästa snickeriprojekt."
 } as const;
@@ -236,6 +236,30 @@ export const areas: Area[] = [
       "Vi hjälper kunder som söker ett mindre, kvalitetsdrivet snickeriteam snarare än en anonym entreprenadkedja.",
     responseNote:
       "Skicka gärna adressområde, bilder och kort projektbeskrivning för Göteborgsprojekt, så kan vi snabbt bedöma upplägg och tillgänglighet."
+  },
+  {
+    slug: "ulricehamn",
+    name: "Ulricehamn",
+    summary:
+      "Vi hjälper kunder i Ulricehamn med noggrant snickeriarbete för hem, fasad, uteplats och kompletterande byggprojekt.",
+    coverageNote:
+      "Ulricehamn passar väl för uppdrag där du vill ha ett personligt snickeriteam som kan planera arbetet tydligt från första kontakt.",
+    localProof:
+      "Vi har kundomdömen från utfört arbete i Ulricehamn, vilket ger nya kunder en konkret bild av bemötande, prisbild och kvalitet.",
+    responseNote:
+      "Skicka gärna bilder, adressområde och önskat tidsspann för projekt i Ulricehamn, så återkommer vi med nästa steg och offertunderlag."
+  },
+  {
+    slug: "harryda",
+    name: "Härryda",
+    summary:
+      "I Härryda hjälper vi villaägare med snickeriprojekt där uteplats, fasad och användbara hemmiljöer står i fokus.",
+    coverageNote:
+      "För Härryda tar vi uppdrag som passar vår kapacitet och där projektets omfattning gör att vi kan leverera rätt kvalitet.",
+    localProof:
+      "Vi har tidigare kundreferenser från uteplatsarbete i Härryda och kan visa relevant utfört arbete när du begär offert.",
+    responseNote:
+      "Beskriv var i Härryda projektet finns, vad som ska göras och om det finns bilder, så kan vi snabbt bedöma upplägg och tillgänglighet."
   }
 ];
 
@@ -282,7 +306,7 @@ export const projectCases: ProjectCase[] = [
       "En sliten fasad fick nytt liv genom noggrant snickeriarbete och ett genomtänkt helhetsgrepp.",
     result:
       "Fasaden fick ett renare uttryck, bättre balans i detaljerna och ett resultat som lyfter hela huset.",
-    image: "https://media.ffinsnickeri.se/IMG_20240816_204139.jpg"
+    image: "/service-about-fasad.webp"
   },
   {
     slug: "altanbygge-boras",
@@ -293,18 +317,7 @@ export const projectCases: ProjectCase[] = [
       "Vi byggde en altan och skapade en tydlig övergång mellan huset och trädgården.",
     result:
       "Hemmet fick en mer användbar utemiljö och en naturlig plats för vardag, vila och umgänge.",
-    image: "https://media.ffinsnickeri.se/IMG_20240429_202932.jpg"
-  },
-  {
-    slug: "uterum-svenljunga",
-    title: "Uterum med ljus och rymd",
-    location: "Svenljunga",
-    service: "Uterum",
-    summary:
-      "Ett uterum planerades för att ge familjen mer plats och ett mjukt möte mellan inne och ute.",
-    result:
-      "Projektet skapade ett ljust och harmoniskt rum som kan användas stora delar av året.",
-    image: "https://media.ffinsnickeri.se/IMG_20250619_190619.jpg"
+    image: "/614374637ac319ed0e56d8fc.webp"
   },
   {
     slug: "fasadrenovering-svenljunga",
@@ -315,7 +328,7 @@ export const projectCases: ProjectCase[] = [
       "Vi tog fram en lösning som bevarade husets uttryck och samtidigt gav fasaden ett tydligt lyft.",
     result:
       "Helhetsintrycket blev varmare, mer sammanhållet och mer hållbart för framtiden.",
-    image: "https://media.ffinsnickeri.se/Takomläggning.jpg"
+    image: "/reference-fasad-white-outbuilding.jpg"
   },
   {
     slug: "altanbygge-svenljunga",
@@ -326,7 +339,7 @@ export const projectCases: ProjectCase[] = [
       "En ny altan formgavs efter husets proportioner och tomtens naturliga flöden.",
     result:
       "Familjen fick en bekväm och vacker plats för måltider, vila och sommarkvällar.",
-    image: "https://media.ffinsnickeri.se/taktvatt.jpeg"
+    image: "/reference-altan-dark-house.jpg"
   },
   {
     slug: "uterum-boras",
@@ -337,7 +350,7 @@ export const projectCases: ProjectCase[] = [
       "Vi byggde ett uterum som skapade mer ljus, mer rymd och en tydlig koppling till trädgården.",
     result:
       "Hemmet fick ett användbart tillskott med hög trivsel och ett uttryck som smälter samman med huset.",
-    image: "https://media.ffinsnickeri.se/IMG_20250723_150752.jpg"
+    image: "/service-hero-uterum.webp"
   }
 ];
 

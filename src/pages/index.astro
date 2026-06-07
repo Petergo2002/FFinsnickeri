@@ -5,6 +5,7 @@ import CtaPanel from "../components/CtaPanel.astro";
 import Testimonials from "../components/Testimonials.astro";
 import heroSwedishHouse from "../assets/seo/hero_swedish_house.png";
 import {
+  areas,
   serviceDetails,
   siteConfig,
   trustPoints
@@ -20,25 +21,23 @@ const homepageServices = homepageServiceSlugs
   .map((slug) => serviceDetails.find((service) => service.slug === slug))
   .filter((service) => service !== undefined);
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
+const priorityAreaSlugs = ["boras", "svenljunga", "goteborg"] as const;
+const priorityAreas = priorityAreaSlugs
+  .map((slug) => areas.find((area) => area.slug === slug))
+  .filter((area) => area !== undefined);
 
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${siteUrl}/#website`,
-  name: siteConfig.businessName,
-  url: siteUrl,
-  inLanguage: "sv-SE",
-  publisher: {
-    "@id": `${siteUrl}/#organization`
-  }
-};
+const priorityLocalLinks = homepageServices.flatMap((service) =>
+  priorityAreas.map((area) => ({
+    href: `/tjanster/${service.slug}/${area.slug}`,
+    label: `${service.name} i ${area.name}`,
+    description: service.areaSeoDescription
+  }))
+);
 ---
 
 <BaseLayout
   title="Snickare i Borås & Svenljunga | F.Finsnickeri"
-  description="Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg. Trygg process, ROT-avdrag och kostnadsfri offert."
-  schema={websiteSchema}
+  description="Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg med omnejd. Trygg process, ROT-avdrag och kostnadsfri offert."
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">
@@ -58,7 +57,7 @@ const websiteSchema = {
           Finsnickeri & Fasadrenovering i Borås & Svenljunga
         </h1>
         <p class="text-lg sm:text-xl md:text-2xl text-on-primary/90 leading-relaxed mb-12 max-w-2xl">
-          {siteConfig.businessName} hjälper kunder i Borås och Svenljunga med fasadrenovering, altanbygge och uterum. Gratis kostnadsförslag för ditt nästa projekt.
+          {siteConfig.businessName} hjälper kunder i Borås, Svenljunga och närliggande orter med fasadrenovering, altanbygge och uterum. Gratis kostnadsförslag för ditt nästa projekt.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/kontakt" class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-bright transition-all shadow-xl">
@@ -78,7 +77,7 @@ const websiteSchema = {
       <div class="p-8 flex flex-col items-center text-center">
         <span class="material-symbols-outlined text-secondary text-4xl mb-3">apartment</span>
         <span class="text-3xl font-bold text-on-surface">Område</span>
-        <span class="text-secondary-dim font-medium">Borås & Svenljunga</span>
+        <span class="text-secondary-dim font-medium">Borås med omnejd</span>
       </div>
       <div class="p-8 flex flex-col items-center text-center">
         <span class="material-symbols-outlined text-secondary text-4xl mb-3">history</span>
@@ -116,6 +115,30 @@ const websiteSchema = {
             </div>
           </a>
         ))}
+      </div>
+
+      <div class="mt-16 rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-6 shadow-sm md:p-8">
+        <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span class="mb-3 block text-xs font-bold uppercase tracking-[0.2em] text-secondary">Populära tjänster lokalt</span>
+            <h2 class="font-headline text-2xl font-extrabold text-on-surface md:text-3xl">Snabb väg till rätt snickare i ditt område</h2>
+          </div>
+          <a href="/omraden" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-secondary">
+            Alla områden
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {priorityLocalLinks.map((link) => (
+            <a
+              href={link.href}
+              class="group rounded-xl border border-outline-variant/10 bg-surface p-5 transition-all hover:border-secondary/30 hover:bg-secondary-container/40"
+            >
+              <h3 class="font-bold text-on-surface transition-colors group-hover:text-secondary">{link.label}</h3>
+              <p class="mt-2 line-clamp-2 text-sm leading-relaxed text-secondary-dim">{link.description}</p>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>

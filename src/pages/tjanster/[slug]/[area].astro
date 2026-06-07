@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import CtaPanel from "../../../components/CtaPanel.astro";
 import {
   areas,
+  projectCases,
   serviceDetails,
   siteConfig,
   testimonials,
@@ -10,10 +11,6 @@ import {
   type Area
 } from "../../../data/site";
 
-/**
- * Generates all static paths for service+area combinations.
- * Creates routes like /tjanster/taktvatt/boras for every service/area pair.
- */
 export function getStaticPaths() {
   return serviceDetails.flatMap((service) =>
     areas
@@ -33,6 +30,35 @@ interface Props {
 const { service, area } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const normalizedAreaName = area.name.toLowerCase();
+const normalizedServiceName = service.name.toLowerCase();
+const relatedProjects = projectCases
+  .filter(
+    (project) =>
+      project.location.toLowerCase() === normalizedAreaName &&
+      project.service.toLowerCase() === normalizedServiceName
+  )
+  .slice(0, 2);
+const areaTestimonials = testimonials.filter((item) =>
+  item.role.toLowerCase().includes(normalizedAreaName)
+);
+const serviceKeywords: Record<string, string[]> = {
+  fasadrenovering: ["fasad", "redskapsbod", "gipsskivor"],
+  altanbygge: ["altan", "uteplats"],
+  uterum: ["uterum", "kanalplasttak", "uteplats"]
+};
+const serviceTestimonials = testimonials.filter((item) =>
+  (serviceKeywords[service.slug] ?? [normalizedServiceName]).some((keyword) =>
+    item.role.toLowerCase().includes(keyword)
+  )
+);
+const testimonial =
+  areaTestimonials.find((item) =>
+    (serviceKeywords[service.slug] ?? [normalizedServiceName]).some((keyword) =>
+      item.role.toLowerCase().includes(keyword)
+    )
+  ) ?? serviceTestimonials[0] ?? testimonials[0];
+const otherAreas = areas.filter((item) => !item.hasNoPage && item.slug !== area.slug);
 
 // SEO-optimized title and description specific to this service+area combo
 const pageTitle = `${service.name} i ${area.name} | ${siteConfig.businessName}`;
@@ -125,14 +151,52 @@ const faqSchema = {
   ]
 };
 
-// Pick a testimonial to show on this page
-const testimonial = testimonials[0];
+const areaServiceAngles: Record<string, Record<string, string>> = {
+  boras: {
+    fasadrenovering:
+      "I Borås handlar fasadrenovering ofta om att bevara villans uttryck samtidigt som slitna trädetaljer, panel och helhetsintryck får nytt liv. Vi planerar arbetet så att huset känns genomarbetat från gata, entré och trädgård.",
+    altanbygge:
+      "I Borås hjälper vi villaägare att skapa altaner som fungerar med nivåskillnader, sol, trädgård och vardagsflöde. Målet är en uteplats som känns naturlig mot huset och enkel att använda ofta.",
+    uterum:
+      "I Borås planerar vi uterum för kunder som vill få mer ljus, längre säsong och en mjukare övergång mellan huset och trädgården. Utformningen anpassas efter fasad, utsikt och hur rummet ska användas."
+  },
+  svenljunga: {
+    fasadrenovering:
+      "I Svenljunga är närheten till vår bas en styrka när fasadrenoveringen behöver tydlig dialog, praktisk planering och ett noggrant utfört snickeriarbete. Vi ser till både materialkänsla och husets helhet.",
+    altanbygge:
+      "I Svenljunga bygger vi altaner för hem där uteplatsen ska bli en naturlig del av vardagen. Vi tar hänsyn till tomtens form, husets uttryck och hur familjen vill använda ytan.",
+    uterum:
+      "I Svenljunga hjälper vi kunder att skapa uterum som ger mer plats och fler användbara månader utan att tappa husets karaktär. Vi planerar proportioner, ljus och anslutning noggrant."
+  },
+  goteborg: {
+    fasadrenovering:
+      "För Göteborgsprojekt bedömer vi omfattning, plats och tidsplan tidigt så att fasadrenoveringen får rätt upplägg. Vi passar särskilt bra för kunder som vill ha personlig dialog och kvalitetsdrivet utförande.",
+    altanbygge:
+      "I Göteborg med omnejd hjälper vi kunder som vill bygga altan med mer personlig planering än en standardlösning. Vi tittar på läge, insyn, nivåer och hur altanen ska användas.",
+    uterum:
+      "För uterum i Göteborg med omnejd fokuserar vi på projekt där lösningen behöver kännas genomtänkt mot huset och där tydlig dialog från start är viktig."
+  },
+  ulricehamn: {
+    fasadrenovering:
+      "I Ulricehamn hjälper vi kunder som vill förbättra husets uttryck med noggrant snickeriarbete och en fasadlösning som fungerar för både skick, budget och stil.",
+    altanbygge:
+      "I Ulricehamn planerar vi altaner som tar vara på utsikt, trädgård och hur uteplatsen ska användas under vardag och helg. Resultatet ska kännas praktiskt och välproportionerat.",
+    uterum:
+      "För uterum i Ulricehamn hjälper vi dig att hitta rätt balans mellan ljus, skydd och känslan av ett rum som hör ihop med huset."
+  },
+  harryda: {
+    fasadrenovering:
+      "I Härryda tar vi fasadprojekt där omfattning och tidsplan passar vårt arbetssätt. Fokus ligger på tydlig planering, rena detaljer och ett resultat som stärker husets helhet.",
+    altanbygge:
+      "I Härryda hjälper vi villaägare att skapa uteplatser som fungerar med natur, nivåer och befintlig trädgård. En välplanerad altan gör stor skillnad för hur hemmet används.",
+    uterum:
+      "För uterum i Härryda planerar vi lösningen efter husets stil, ljuset på platsen och hur rummet ska ge mer användbar yta under året."
+  }
+};
 
-// Detect if this is Borås to use specific local copy
-const isMainCity = area.slug === "boras";
-const localIntro = isMainCity
-  ? `Borås är ett viktigt område för oss, och vi hjälper kunder där med snickeriprojekt som kombinerar kvalitet, estetik och kundvärde. Oavsett om det gäller ${service.name.toLowerCase()} planerar vi lösningen utifrån hemmet, önskemålen och hur resultatet ska användas i vardagen.`
-  : `I ${area.name} hjälper vi kunder med samma noggrannhet och engagemang som i hela vårt arbetsområde. När du anlitar oss för ${service.name.toLowerCase()} får du ett genomtänkt snickeriprojekt där funktion, form och kvalitet får arbeta tillsammans.`;
+const localIntro =
+  areaServiceAngles[area.slug]?.[service.slug] ??
+  `I ${area.name} hjälper vi kunder med ${service.name.toLowerCase()} där funktion, form och kvalitet får arbeta tillsammans.`;
 
 const heroImage = service.image;
 ---
@@ -260,24 +324,45 @@ const heroImage = service.image;
         <!-- Proof images -->
         <div>
           <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Utfört arbete</span>
-          <h2 class="font-headline text-3xl font-bold text-on-surface mb-6">Kundnöjdhet som talar för sig självt.</h2>
+          <h2 class="font-headline text-3xl font-bold text-on-surface mb-6">Kundnöjdhet och referenser nära ditt område.</h2>
           <p class="text-secondary-dim text-lg leading-relaxed mb-8">
-            Våra kunder återkommer och rekommenderar oss vidare. Se ett urval av utfört arbete kopplat till våra snickeriprojekt.
+            Våra kunder återkommer och rekommenderar oss vidare. När det finns relevanta referenser för {area.name} visar vi dem här som stöd inför offertförfrågan.
           </p>
-          <div class="grid grid-cols-2 gap-4">
-            {testimonials.flatMap(t => t.images).slice(0, 4).map((img, i) => (
-              <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-lg">
-                <img
-                  src={img}
-                  alt={`Utfört arbete ${i + 1} – ${service.name} i ${area.name}`}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                  <span class="text-white text-xs font-bold uppercase tracking-wider">Referensarbete</span>
+          {relatedProjects.length > 0 ? (
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {relatedProjects.map((project) => (
+                <article class="overflow-hidden rounded-2xl border border-outline-variant/10 bg-surface-container-lowest shadow-lg">
+                  <img
+                    src={project.image}
+                    alt={`${project.service} i ${project.location}`}
+                    class="h-48 w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div class="p-5">
+                    <span class="mb-2 block text-[10px] font-bold uppercase tracking-wider text-secondary">{project.service} · {project.location}</span>
+                    <h3 class="font-bold text-on-surface">{project.title}</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-secondary-dim">{project.result}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div class="grid grid-cols-2 gap-4">
+              {testimonials.flatMap(t => t.images).slice(0, 4).map((img, i) => (
+                <div class="relative group overflow-hidden rounded-2xl aspect-square shadow-lg">
+                  <img
+                    src={img}
+                    alt={`Utfört arbete ${i + 1} – ${service.name} i ${area.name}`}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                    <span class="text-white text-xs font-bold uppercase tracking-wider">Referensarbete</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -377,14 +462,10 @@ const heroImage = service.image;
         <h2 class="font-headline text-3xl font-bold text-on-surface">Vi utför {service.name.toLowerCase()} i hela regionen</h2>
       </div>
       <div class="flex flex-wrap gap-3 justify-center">
-        {areas.map((a) => (
+        {otherAreas.map((a) => (
           <a
             href={`/tjanster/${service.slug}/${a.slug}`}
-            class={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${
-              a.slug === area.slug
-                ? "bg-secondary text-on-secondary border-secondary shadow-md"
-                : "bg-surface-container-lowest text-on-surface border-outline-variant/20 hover:border-secondary hover:text-secondary"
-            }`}
+            class="px-5 py-2.5 rounded-full text-sm font-semibold transition-all border bg-surface-container-lowest text-on-surface border-outline-variant/20 hover:border-secondary hover:text-secondary"
           >
             {service.name} i {a.name}
           </a>

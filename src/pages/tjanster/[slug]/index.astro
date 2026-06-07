@@ -214,7 +214,7 @@ const faqSchema = {
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center">
         <div class="lg:col-span-1">
           <h2 class="font-headline text-3xl font-bold text-on-surface mb-6">Områden vi verkar i</h2>
-          <p class="text-on-surface-variant mb-8">Vi utgår från Östra Frölunda och arbetar i Borås och Svenljunga. Hittar du inte din ort? Kontakta oss för en förfrågan.</p>
+          <p class="text-on-surface-variant mb-8">Vi utgår från Östra Frölunda och arbetar i {siteConfig.serviceAreaLabel}. Hittar du inte din ort? Kontakta oss för en förfrågan.</p>
           <div class="flex flex-wrap gap-2">
             {areas.map(area => (
               area.hasNoPage ? (

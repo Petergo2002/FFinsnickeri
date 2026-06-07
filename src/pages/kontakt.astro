@@ -24,12 +24,24 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${currentUrl}#contact`,
+  name: `Kontakta ${siteConfig.businessName}`,
+  url: currentUrl,
+  inLanguage: "sv-SE",
+  mainEntity: {
+    "@id": `${siteUrl}/#organization`
+  }
+};
 ---
 
 <BaseLayout 
   title={`Kontakta snickare i Borås & Svenljunga | ${siteConfig.businessName}`} 
   description={`Vill du bygga altan, renovera fasad eller skapa uterum? Kontakta ${siteConfig.businessName} för rådgivning, snabb återkoppling och kostnadsfri offert.`}
-  schema={breadcrumbSchema}
+  schema={[breadcrumbSchema, contactPageSchema]}
 >
   <main class="pt-32 pb-20">
     <!-- Hero Section -->

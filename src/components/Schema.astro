@@ -8,6 +8,11 @@ interface Props {
 const { item } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 const serviceArea = areas.map((area) => ({ "@type": "City", "name": area.name }));
+const normalizeSchemas = (value: any): any[] => {
+  if (!value) return [];
+  if (Array.isArray(value)) return value.flatMap((entry) => normalizeSchemas(entry));
+  return [value];
+};
 
 // Base local entity shared across the site. Keep facts aligned with visible site content.
 const organizationSchema = {
@@ -15,6 +20,7 @@ const organizationSchema = {
   "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
   "@id": `${siteUrl}/#organization`,
   "name": siteConfig.businessName,
+  "alternateName": "F Finsnickeri",
   "url": siteUrl,
   "logo": {
     "@type": "ImageObject",
@@ -33,23 +39,50 @@ const organizationSchema = {
   "telephone": siteConfig.primaryPhone,
   "email": siteConfig.primaryEmail,
   "priceRange": "$$",
-  "areaServed": serviceArea,
-  "knowsAbout": serviceDetails.map((service) => service.name),
-  "makesOffer": serviceDetails.map((service) => ({
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": service.name,
-      "url": `${siteUrl}/tjanster/${service.slug}/`
+  "currenciesAccepted": "SEK",
+  "areaServed": [
+    ...serviceArea,
+    {
+      "@type": "AdministrativeArea",
+      "name": "Västra Götaland"
     }
-  }))
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": siteConfig.primaryPhone,
+    "email": siteConfig.primaryEmail,
+    "contactType": "customer service",
+    "areaServed": "SE",
+    "availableLanguage": ["sv"]
+  },
+  "knowsAbout": serviceDetails.map((service) => service.name),
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Snickeritjänster",
+    "itemListElement": serviceDetails.map((service) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.name,
+        "url": `${siteUrl}/tjanster/${service.slug}/`
+      }
+    }))
+  }
 };
 
-const schemas: any[] = [organizationSchema];
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  "name": siteConfig.businessName,
+  "url": siteUrl,
+  "inLanguage": "sv-SE",
+  "publisher": {
+    "@id": `${siteUrl}/#organization`
+  }
+};
 
-if (item) {
-  schemas.push(...(Array.isArray(item) ? item : [item]));
-}
+const schemas: any[] = [organizationSchema, websiteSchema, ...normalizeSchemas(item)];
 ---
 
 <script is:inline type="application/ld+json" set:html={JSON.stringify(schemas)} />

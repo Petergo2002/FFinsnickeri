@@ -1,5 +1,5 @@
 ---
-import { siteConfig, serviceDetails } from "../data/site";
+import { areas, siteConfig, serviceDetails } from "../data/site";
 import Schema from "../components/Schema.astro";
 import "../styles/global.css";
 
@@ -23,7 +23,29 @@ const {
 
 const pathname = Astro.url.pathname;
 const phoneHref = `tel:${siteConfig.primaryPhone.replace(/\s+/g, "")}`;
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 const canonicalHref = canonicalURL.toString();
+const imageHref = new URL(image, siteUrl).toString();
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${canonicalHref}#webpage`,
+  "url": canonicalHref,
+  "name": title,
+  "description": description,
+  "inLanguage": "sv-SE",
+  "isPartOf": {
+    "@id": `${siteUrl}/#website`
+  },
+  "publisher": {
+    "@id": `${siteUrl}/#organization`
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": imageHref
+  }
+};
+const schemaItems = schema ? [pageSchema, schema] : pageSchema;
 
 ---
 
@@ -35,6 +57,8 @@ const canonicalHref = canonicalURL.toString();
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="robots" content={robots} />
+    <meta name="author" content={siteConfig.businessName} />
+    <meta name="theme-color" content="#4f6073" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalHref} />
@@ -48,19 +72,22 @@ const canonicalHref = canonicalURL.toString();
     <meta property="og:site_name" content={siteConfig.businessName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site)} />
+    <meta property="og:image" content={imageHref} />
+    <meta property="og:image:alt" content={`${siteConfig.businessName} - ${title}`} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalHref} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalHref} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageHref} />
 
-    <Schema item={schema} />
+    <Schema item={schemaItems} />
 
     <title>{title}</title>
     <link rel="icon" type="image/webp" href="/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   </head>
   <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container flex min-h-screen flex-col antialiased">
@@ -109,6 +136,7 @@ const canonicalHref = canonicalURL.toString();
           </div>
 
           <a class={`transition-colors ${pathname === "/om-oss" ? "text-secondary border-b-2 border-secondary pb-1" : "text-secondary-dim hover:text-secondary border-b-2 border-transparent pb-1"}`} href="/om-oss">Om oss</a>
+          <a class={`transition-colors ${pathname.startsWith("/omraden") ? "text-secondary border-b-2 border-secondary pb-1" : "text-secondary-dim hover:text-secondary border-b-2 border-transparent pb-1"}`} href="/omraden">Områden</a>
           <a class={`transition-colors ${pathname === "/projekt" ? "text-secondary border-b-2 border-secondary pb-1" : "text-secondary-dim hover:text-secondary border-b-2 border-transparent pb-1"}`} href="/projekt">Referenser</a>
         </div>
         
@@ -201,13 +229,25 @@ const canonicalHref = canonicalURL.toString();
           </a>
 
           <a
+            href="/omraden"
+            class={`mobile-nav-link animate-menu-item rounded-2xl border px-4 py-4 text-2xl font-headline font-bold transition-colors ${
+              pathname.startsWith("/omraden")
+                ? "border-secondary bg-secondary-container text-on-secondary-container"
+                : "border-surface-container-high bg-white text-on-surface hover:text-secondary"
+            }`}
+            style="animation-delay: 380ms;"
+          >
+            Områden
+          </a>
+
+          <a
             href="/projekt"
             class={`mobile-nav-link animate-menu-item rounded-2xl border px-4 py-4 text-2xl font-headline font-bold transition-colors ${
               pathname === "/projekt"
                 ? "border-secondary bg-secondary-container text-on-secondary-container"
                 : "border-surface-container-high bg-white text-on-surface hover:text-secondary"
             }`}
-            style="animation-delay: 420ms;"
+            style="animation-delay: 460ms;"
           >
             Referenser
           </a>
@@ -219,7 +259,7 @@ const canonicalHref = canonicalURL.toString();
                 ? "border-secondary bg-secondary-container text-on-secondary-container"
                 : "border-surface-container-high bg-white text-on-surface hover:text-secondary"
             }`}
-            style="animation-delay: 500ms;"
+            style="animation-delay: 540ms;"
           >
             Kontakta oss
           </a>
@@ -241,10 +281,10 @@ const canonicalHref = canonicalURL.toString();
           </div>
           
           <div class="flex justify-center gap-4">
-            <a href="#" class="w-11 h-11 rounded-xl bg-white border border-surface-container-high flex items-center justify-center text-primary shadow-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all">
+            <a href="/projekt" class="w-11 h-11 rounded-xl bg-white border border-surface-container-high flex items-center justify-center text-primary shadow-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all" aria-label="Se referensprojekt">
               <span class="material-symbols-outlined">camera_indoor</span>
             </a>
-            <a href="#" class="w-11 h-11 rounded-xl bg-white border border-surface-container-high flex items-center justify-center text-primary shadow-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all">
+            <a href={`mailto:${siteConfig.primaryEmail}`} class="w-11 h-11 rounded-xl bg-white border border-surface-container-high flex items-center justify-center text-primary shadow-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all" aria-label="Mejla F.Finsnickeri">
               <span class="material-symbols-outlined">alternate_email</span>
             </a>
           </div>
@@ -311,17 +351,17 @@ const canonicalHref = canonicalURL.toString();
 
     <!-- Footer -->
     <footer class="w-full pt-24 pb-12 border-t border-surface-container-high bg-surface font-body text-sm leading-relaxed mt-24">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-4 sm:px-6 mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-12 max-w-7xl mx-auto px-4 sm:px-6 mb-20">
         <div class="space-y-6">
           <a href="/" class="block">
             <img src="/logo.webp" alt={`${siteConfig.businessName} logotyp för snickare i Borås och Svenljunga`} class="h-10 md:h-12 w-auto" />
           </a>
           <p class="text-secondary-dim max-w-xs">{siteConfig.tagline}. Din helhetspartner i {siteConfig.serviceAreaLabel.toLowerCase()}.</p>
           <div class="flex gap-4">
-            <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-secondary-dim hover:bg-secondary hover:text-on-secondary transition-all" href="#">
+            <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-secondary-dim hover:bg-secondary hover:text-on-secondary transition-all" href="/projekt" aria-label="Se referensprojekt">
               <span class="material-symbols-outlined text-xl">social_leaderboard</span>
             </a>
-            <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-secondary-dim hover:bg-secondary hover:text-on-secondary transition-all" href="#">
+            <a class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-secondary-dim hover:bg-secondary hover:text-on-secondary transition-all" href={`mailto:${siteConfig.primaryEmail}`} aria-label="Mejla F.Finsnickeri">
               <span class="material-symbols-outlined text-xl">camera</span>
             </a>
           </div>
@@ -338,8 +378,17 @@ const canonicalHref = canonicalURL.toString();
           <h4 class="font-bold text-primary uppercase tracking-widest text-xs">Företaget</h4>
           <ul class="space-y-4">
             <li><a class="text-secondary-dim hover:text-secondary underline decoration-2 underline-offset-4 transition-colors" href="/om-oss">Om oss</a></li>
+            <li><a class="text-secondary-dim hover:text-secondary underline decoration-2 underline-offset-4 transition-colors" href="/omraden">Verksamhetsområden</a></li>
             <li><a class="text-secondary-dim hover:text-secondary underline decoration-2 underline-offset-4 transition-colors" href="/projekt">Referenser</a></li>
             <li><a class="text-secondary-dim hover:text-secondary underline decoration-2 underline-offset-4 transition-colors" href="/kontakt">Kontakta oss</a></li>
+          </ul>
+        </div>
+        <div class="space-y-6">
+          <h4 class="font-bold text-primary uppercase tracking-widest text-xs">Områden</h4>
+          <ul class="space-y-4">
+            {areas.filter((area) => !area.hasNoPage).map((area) => (
+              <li><a class="text-secondary-dim hover:text-secondary underline decoration-2 underline-offset-4 transition-colors" href={`/omraden/${area.slug}`}>Snickare i {area.name}</a></li>
+            ))}
           </ul>
         </div>
         <div class="space-y-6">

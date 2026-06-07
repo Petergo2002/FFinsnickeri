@@ -26,17 +26,33 @@ const breadcrumbSchema = {
     }
   ]
 };
+
+const collectionPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${currentUrl}#areas`,
+  name: "Verksamhetsområden",
+  url: currentUrl,
+  inLanguage: "sv-SE",
+  hasPart: areas
+    .filter((area) => !area.hasNoPage)
+    .map((area) => ({
+      "@type": "WebPage",
+      name: `Snickare i ${area.name}`,
+      url: `${siteUrl}/omraden/${area.slug}/`
+    }))
+};
 ---
 
 <BaseLayout
-  title={`Snickare i Borås, Svenljunga & Göteborg | ${siteConfig.businessName}`}
-  description={`${siteConfig.businessName} hjälper villaägare i Borås, Svenljunga och Göteborg med altanbygge, fasadrenovering och uterum. Kostnadsfri offert.`}
-  schema={breadcrumbSchema}
+  title={`Snickare i Västra Götaland | ${siteConfig.businessName}`}
+  description={`${siteConfig.businessName} hjälper villaägare i ${siteConfig.serviceAreaLabel} med altanbygge, fasadrenovering och uterum. Kostnadsfri offert.`}
+  schema={[breadcrumbSchema, collectionPageSchema]}
 >
   <div class="flex flex-col gap-16 pb-24 md:gap-24">
     <PageHero
       eyebrow="Verksamhetsområden"
-      title="Snickare i Borås, Svenljunga & Göteborg"
+      title="Snickare i Borås, Svenljunga, Göteborg, Ulricehamn & Härryda"
       body={`Vår bas finns i ${siteConfig.city}, och vi hjälper kunder i ${siteConfig.serviceAreaLabel} med fasadrenovering, altanbygge och uterum.`}
       primaryHref="/kontakt"
       primaryLabel="Kontakta oss"
@@ -65,10 +81,18 @@ const breadcrumbSchema = {
                   <svg class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
                 <div>
-                  <h3 class="mb-1 text-lg font-bold text-slate-900">{area.name}</h3>
+                  <h3 class="mb-1 text-lg font-bold text-slate-900">
+                    <a href={`/omraden/${area.slug}`} class="hover:text-secondary">Snickare i {area.name}</a>
+                  </h3>
                   <p class="text-sm leading-relaxed text-slate-600">{area.summary}</p>
                 </div>
               </div>
+              {!area.hasNoPage && (
+                <a href={`/omraden/${area.slug}`} class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-secondary">
+                  Läs om {area.name}
+                  <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </a>
+              )}
               <div class="flex flex-wrap gap-2 border-t border-slate-100 pt-5">
                 {serviceDetails.map((service) => (
                   <a
