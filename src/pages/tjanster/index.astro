@@ -1,10 +1,29 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { serviceDetails, siteConfig } from "../../data/site";
+import { areas, serviceDetails, siteConfig } from "../../data/site";
 import CtaPanel from "../../components/CtaPanel.astro";
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const highIntentLocalLinks = [
+  { service: "altanbygge", area: "goteborg" },
+  { service: "uterum", area: "goteborg" },
+  { service: "fasadrenovering", area: "boras" },
+  { service: "altanbygge", area: "boras" },
+  { service: "uterum", area: "boras" },
+  { service: "altanbygge", area: "ulricehamn" }
+]
+  .map(({ service, area }) => {
+    const serviceDetail = serviceDetails.find((item) => item.slug === service);
+    const areaDetail = areas.find((item) => item.slug === area);
+    if (!serviceDetail || !areaDetail) return undefined;
+    return {
+      href: `/tjanster/${serviceDetail.slug}/${areaDetail.slug}`,
+      label: `${serviceDetail.name} i ${areaDetail.name}`,
+      description: serviceDetail.areaSeoDescription
+    };
+  })
+  .filter((item) => item !== undefined);
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -27,8 +46,8 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title={`Snickeritjänster i Borås & Svenljunga | ${siteConfig.businessName}`}
-  description="Fasadrenovering, altanbygge och uterum för villaägare i Borås, Svenljunga och Göteborg. Se tjänster och boka kostnadsfri offert."
+  title={`Snickeritjänster i Borås, Göteborg & Ulricehamn | ${siteConfig.businessName}`}
+  description="Fasadrenovering, altanbygge och uterum för villaägare i Borås, Göteborg, Ulricehamn och Svenljunga. Se tjänster och boka kostnadsfri offert."
   schema={breadcrumbSchema}
 >
   <!-- Hero Section -->
@@ -37,11 +56,11 @@ const breadcrumbSchema = {
       <div class="md:col-span-7 z-10">
         <span class="inline-block text-[#CD061F] font-headline font-bold text-xs tracking-[0.2em] uppercase mb-4">Vår Expertis</span>
         <h1 class="text-4xl sm:text-5xl md:text-7xl font-headline font-extrabold text-on-surface tracking-tighter leading-[0.95] mb-8">
-            Tjänster i Borås & Svenljunga <br/>
+            Tjänster i Borås, Göteborg & Ulricehamn <br/>
             <span class="text-[#CD061F]">för hem och utemiljö</span>
         </h1>
         <p class="text-lg sm:text-xl text-on-surface-variant max-w-xl leading-relaxed">
-            Vi erbjuder exakt tre tjänster: fasadrenovering, altanbygge och uterum. Allt vi gör utgår från kvalitet, estetik och kundens önskemål.
+            Vi erbjuder fasadrenovering, altanbygge och uterum för kunder i Borås, Göteborg, Ulricehamn och Svenljunga. Allt vi gör utgår från kvalitet, estetik och kundens önskemål.
         </p>
       </div>
       <div class="md:col-span-5 relative space-y-4">
@@ -96,6 +115,24 @@ const breadcrumbSchema = {
             </div>
           </div>
         ))}
+      </div>
+
+      <div class="mt-16 rounded-2xl border border-slate-100 bg-surface-container-lowest p-6 shadow-sm md:p-8">
+        <div class="mb-8 max-w-2xl">
+          <span class="mb-3 block text-xs font-bold uppercase tracking-[0.2em] text-secondary">Lokala tjänster</span>
+          <h2 class="text-2xl font-headline font-extrabold text-on-surface md:text-3xl">Populära sökningar vi vill göra enklare att hitta</h2>
+          <p class="mt-3 text-sm leading-relaxed text-on-surface-variant">
+            Här finns direkta vägar till de sidor där kunder oftast jämför snickare, altanbygge, uterum och fasadrenovering i våra viktigaste arbetsområden.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {highIntentLocalLinks.map((link) => (
+            <a href={link.href} class="group rounded-xl border border-slate-100 bg-white p-5 transition-all hover:border-secondary/30 hover:shadow-md">
+              <h3 class="font-bold text-on-surface transition-colors group-hover:text-secondary">{link.label}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">{link.description}</p>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>

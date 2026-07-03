@@ -3,6 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import CtaPanel from "../../../components/CtaPanel.astro";
 import {
   areas,
+  getServiceAreaSeo,
   projectCases,
   serviceDetails,
   siteConfig,
@@ -59,17 +60,34 @@ const testimonial =
     )
   ) ?? serviceTestimonials[0] ?? testimonials[0];
 const otherAreas = areas.filter((item) => !item.hasNoPage && item.slug !== area.slug);
+const localSeo = getServiceAreaSeo(service.slug, area.slug);
 
 // SEO-optimized title and description specific to this service+area combo
-const pageTitle = `${service.name} i ${area.name} | ${siteConfig.businessName}`;
+const pageTitle = localSeo?.seoTitle ?? `${service.name} i ${area.name} | ${siteConfig.businessName}`;
 const localDescriptions: Record<string, string> = {
   fasadrenovering: `Ge huset ett starkare första intryck. Vi hjälper dig med fasadrenovering i ${area.name} med tydlig planering, noggrant utförande och kostnadsfri offert.`,
   altanbygge: `Planerar du altan i ${area.name}? Vi bygger altaner som passar hus, tomt och budget. Trygg process och kostnadsfri offert.`,
   uterum: `Vill du förlänga säsongen med uterum i ${area.name}? Vi hjälper dig med planering, bygge och kostnadsfri offert.`
 };
 const pageDescription =
+  localSeo?.seoDescription ??
   localDescriptions[service.slug] ??
   `Behöver du hjälp med ${service.name.toLowerCase()} i ${area.name}? ${siteConfig.businessName} hjälper dig med tydlig planering, noggrant utförande och kostnadsfri offert.`;
+const pageFaqs = localSeo?.faqs ?? [
+  {
+    question: `Utför ni ${service.name.toLowerCase()} i ${area.name}?`,
+    answer: `Ja, ${siteConfig.businessName} hjälper kunder i ${area.name} med ${service.name.toLowerCase()} när projektets omfattning och tidsplan passar vårt arbetsområde.`
+  },
+  {
+    question: "Hur får jag en offert?",
+    answer:
+      "Kontakta oss med adressområde, bilder och en kort beskrivning av projektet. Vi återkommer med nästa steg och offertupplägg."
+  },
+  {
+    question: "Vilka andra snickeritjänster erbjuder ni i området?",
+    answer: `${siteConfig.businessName} hjälper med fasadrenovering, altanbygge och uterum i ${area.name} och närliggande områden.`
+  }
+];
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -123,32 +141,14 @@ const serviceSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: `Utför ni ${service.name.toLowerCase()} i ${area.name}?`,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `Ja, ${siteConfig.businessName} hjälper kunder i ${area.name} med ${service.name.toLowerCase()} när projektets omfattning och tidsplan passar vårt arbetsområde.`
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Hur får jag en offert?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Kontakta oss med adressområde, bilder och en kort beskrivning av projektet. Vi återkommer med nästa steg och offertupplägg."
-      }
-    },
-    {
-      "@type": "Question",
-      name: "Vilka andra snickeritjänster erbjuder ni i området?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: `${siteConfig.businessName} hjälper med fasadrenovering, altanbygge och uterum i ${area.name} och närliggande områden.`
-      }
+  mainEntity: pageFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
     }
-  ]
+  }))
 };
 
 const areaServiceAngles: Record<string, Record<string, string>> = {
@@ -195,8 +195,29 @@ const areaServiceAngles: Record<string, Record<string, string>> = {
 };
 
 const localIntro =
+  localSeo?.intro ??
   areaServiceAngles[area.slug]?.[service.slug] ??
   `I ${area.name} hjälper vi kunder med ${service.name.toLowerCase()} där funktion, form och kvalitet får arbeta tillsammans.`;
+const localUseCases =
+  localSeo?.useCases ??
+  [
+    `${service.name} där huset, platsen och budgeten behöver vägas samman innan offert.`,
+    `Projekt i ${area.name} där du vill ha tydlig dialog från första kontakt till färdigt arbete.`,
+    `Snickeriarbete som ska ge ett vackrare och mer användbart hem med högre helhetskänsla.`
+  ];
+const localIncluded =
+  localSeo?.included ??
+  [
+    "Första genomgång av önskemål, plats och ungefärlig omfattning.",
+    "Rådgivning kring material, utförande och praktiskt upplägg.",
+    "Noggrant snickeriarbete med fokus på kvalitet, estetik och tydlig kommunikation."
+  ];
+const localProof =
+  localSeo?.localProof ??
+  area.localProof;
+const quoteNote =
+  localSeo?.quoteNote ??
+  "Skicka gärna adressområde, bilder och en kort beskrivning av projektet så kan vi snabbare bedöma nästa steg.";
 
 const heroImage = service.image;
 ---
@@ -234,7 +255,7 @@ const heroImage = service.image;
           {service.name} i {area.name}
         </h1>
         <p class="text-lg sm:text-xl text-white/90 mb-10 font-light leading-relaxed max-w-xl">
-          {siteConfig.businessName} hjälper dig med {service.name.toLowerCase()} i {area.name} med fokus på kvalitet, estetik och ett resultat som håller över tid.
+          {localSeo?.heroSubtitle ?? `${siteConfig.businessName} hjälper dig med ${service.name.toLowerCase()} i ${area.name} med fokus på kvalitet, estetik och ett resultat som håller över tid.`}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/kontakt" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-secondary-dim transition-all text-center">
@@ -260,12 +281,55 @@ const heroImage = service.image;
           <p>{localIntro}</p>
           <p>{area.summary}</p>
           <p>{area.coverageNote}</p>
-          <p>{service.about[0]}</p>
+          <p>{localProof}</p>
         </div>
         <a href="/kontakt" class="mt-12 inline-flex items-center gap-2 bg-secondary text-on-secondary px-10 py-4 rounded-xl font-bold text-lg hover:bg-secondary-dim transition-all shadow-lg">
           Begär offert
           <span class="material-symbols-outlined text-xl">arrow_forward</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Search Intent -->
+  <section class="py-24 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-end">
+        <div class="lg:col-span-2">
+          <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase block mb-4">Lokalt sökbehov</span>
+          <h2 class="font-headline text-4xl font-bold text-on-surface tracking-tight">
+            Vanliga uppdrag för {service.name.toLowerCase()} i {area.name}
+          </h2>
+        </div>
+        <p class="text-secondary-dim leading-relaxed">
+          {quoteNote}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div class="rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm">
+          <h3 class="mb-6 text-2xl font-bold text-on-surface">Det kunder ofta vill lösa</h3>
+          <ul class="space-y-4">
+            {localUseCases.map((item) => (
+              <li class="flex gap-3 text-secondary-dim">
+                <span class="material-symbols-outlined mt-0.5 text-xl text-secondary">task_alt</span>
+                <span class="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-outline-variant/10 bg-surface-container-lowest p-8 shadow-sm">
+          <h3 class="mb-6 text-2xl font-bold text-on-surface">Det här ingår i upplägget</h3>
+          <ul class="space-y-4">
+            {localIncluded.map((item) => (
+              <li class="flex gap-3 text-secondary-dim">
+                <span class="material-symbols-outlined mt-0.5 text-xl text-secondary">handshake</span>
+                <span class="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -423,33 +487,15 @@ const heroImage = service.image;
         <h2 class="font-headline text-4xl font-bold text-on-surface">Frågor om {service.name.toLowerCase()} i {area.name}</h2>
       </div>
       <div class="divide-y divide-outline-variant/20 rounded-2xl border border-outline-variant/10 bg-surface-container-lowest">
-        <details class="group p-6">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
-            Utför ni {service.name.toLowerCase()} i {area.name}?
-            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
-          </summary>
-          <p class="mt-4 text-on-surface-variant leading-relaxed">
-            Ja, vi hjälper kunder i {area.name} med {service.name.toLowerCase()} när projektets omfattning och tidsplan passar vårt arbetsområde.
-          </p>
-        </details>
-        <details class="group p-6">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
-            Hur får jag en offert?
-            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
-          </summary>
-          <p class="mt-4 text-on-surface-variant leading-relaxed">
-            Kontakta oss med adressområde, bilder och en kort beskrivning av projektet. Vi återkommer med nästa steg och offertupplägg.
-          </p>
-        </details>
-        <details class="group p-6">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
-            Vilka andra snickeritjänster erbjuder ni i området?
-            <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
-          </summary>
-          <p class="mt-4 text-on-surface-variant leading-relaxed">
-            Vi hjälper med fasadrenovering, altanbygge och uterum i {area.name} och närliggande områden.
-          </p>
-        </details>
+        {pageFaqs.map((faq) => (
+          <details class="group p-6">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-bold text-on-surface marker:hidden">
+              {faq.question}
+              <span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+            </summary>
+            <p class="mt-4 text-on-surface-variant leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>

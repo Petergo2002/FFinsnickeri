@@ -21,7 +21,7 @@ const homepageServices = homepageServiceSlugs
   .map((slug) => serviceDetails.find((service) => service.slug === slug))
   .filter((service) => service !== undefined);
 
-const priorityAreaSlugs = ["boras", "svenljunga", "goteborg"] as const;
+const priorityAreaSlugs = ["boras", "goteborg", "ulricehamn", "svenljunga"] as const;
 const priorityAreas = priorityAreaSlugs
   .map((slug) => areas.find((area) => area.slug === slug))
   .filter((area) => area !== undefined);
@@ -36,8 +36,8 @@ const priorityLocalLinks = homepageServices.flatMap((service) =>
 ---
 
 <BaseLayout
-  title="Snickare i Borås & Svenljunga | F.Finsnickeri"
-  description="Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Svenljunga och Göteborg med omnejd. Trygg process, ROT-avdrag och kostnadsfri offert."
+  title="Snickare i Borås, Göteborg & Ulricehamn | F.Finsnickeri"
+  description="Erfaren snickare för fasadrenovering, altanbygge och uterum i Borås, Göteborg, Ulricehamn och Svenljunga. Trygg process och kostnadsfri offert."
 >
   <!-- Hero Section -->
   <section class="relative flex min-h-[720px] items-center overflow-hidden bg-primary py-24 text-on-primary sm:min-h-[870px] sm:py-0">
@@ -52,12 +52,12 @@ const priorityLocalLinks = homepageServices.flatMap((service) =>
     </div>
     <div class="relative max-w-7xl mx-auto w-full px-4 sm:px-6 z-10">
       <div class="max-w-3xl">
-        <span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">Snickare i Borås, Svenljunga & Östra Frölunda</span>
+        <span class="inline-block px-3 py-1 bg-tertiary-container text-on-tertiary-container rounded-full text-xs font-bold tracking-widest uppercase mb-6">Snickare i Borås, Göteborg, Ulricehamn & Svenljunga</span>
         <h1 class="font-headline text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-8">
-          Finsnickeri & Fasadrenovering i Borås & Svenljunga
+          Finsnickeri, altan & uterum i Borås med omnejd
         </h1>
         <p class="text-lg sm:text-xl md:text-2xl text-on-primary/90 leading-relaxed mb-12 max-w-2xl">
-          {siteConfig.businessName} hjälper kunder i Borås, Svenljunga och närliggande orter med fasadrenovering, altanbygge och uterum. Gratis kostnadsförslag för ditt nästa projekt.
+          {siteConfig.businessName} hjälper kunder i Borås, Göteborg, Ulricehamn och närliggande orter med fasadrenovering, altanbygge och uterum. Gratis kostnadsförslag för ditt nästa projekt.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/kontakt" class="bg-surface-container-lowest text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-bright transition-all shadow-xl">
@@ -100,7 +100,7 @@ const priorityLocalLinks = homepageServices.flatMap((service) =>
           <span class="text-secondary font-bold tracking-[0.2em] text-xs uppercase mb-4 block">Våra Tjänster</span>
           <h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface leading-tight">Tre snickeritjänster med fokus på hem, harmoni och kvalitet.</h2>
         </div>
-        <p class="text-secondary-dim text-lg max-w-sm">Vi erbjuder exakt det vi gör bäst: fasadrenovering, altanbygge och uterum i Borås och Svenljunga.</p>
+        <p class="text-secondary-dim text-lg max-w-sm">Vi erbjuder exakt det vi gör bäst: fasadrenovering, altanbygge och uterum i Borås, Göteborg, Ulricehamn och Svenljunga.</p>
       </div>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -8,6 +8,19 @@ interface Props {
 const { item } = Astro.props;
 const siteUrl = Astro.site?.toString().replace(/\/$/, "") || "https://ffinsnickeri.se";
 const serviceArea = areas.map((area) => ({ "@type": "City", "name": area.name }));
+const serviceKnowledge = [
+  ...serviceDetails.map((service) => service.name),
+  "Snickare",
+  "Snickeri",
+  "Finsnickeri",
+  "Altanbygge Göteborg",
+  "Altanbygge Borås",
+  "Uterum Göteborg",
+  "Uterum Borås",
+  "Fasadrenovering Borås",
+  "Snickare Borås",
+  "Snickare Ulricehamn"
+];
 const normalizeSchemas = (value: any): any[] => {
   if (!value) return [];
   if (Array.isArray(value)) return value.flatMap((entry) => normalizeSchemas(entry));
@@ -55,7 +68,7 @@ const organizationSchema = {
     "areaServed": "SE",
     "availableLanguage": ["sv"]
   },
-  "knowsAbout": serviceDetails.map((service) => service.name),
+  "knowsAbout": Array.from(new Set(serviceKnowledge)),
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Snickeritjänster",

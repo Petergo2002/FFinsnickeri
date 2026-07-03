@@ -35,6 +35,12 @@ export interface Area {
   coverageNote: string;
   localProof: string;
   responseNote: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  localSearchIntro?: string;
+  conversionFocus?: string;
+  proofPoints?: string[];
+  priorityServiceSlugs?: string[];
   hasNoPage?: boolean;
 }
 
@@ -207,59 +213,124 @@ export const areas: Area[] = [
     name: "Borås",
     summary:
       "Vi hjälper kunder i Borås med fasadrenovering, altanbygge och uterum med fokus på kvalitet, estetik och kundvärde.",
+    seoTitle: "Snickare i Borås | Altan, uterum & fasad | F.Finsnickeri",
+    seoDescription:
+      "Söker du snickare i Borås? F.Finsnickeri hjälper med altanbygge, uterum och fasadrenovering. Tydlig offert, lokala referenser och snabb återkoppling.",
     coverageNote:
       "Borås är ett av våra viktigaste arbetsområden för villaägare som vill renovera fasad, bygga altan eller skapa ett mer användbart uterum.",
     localProof:
       "Vi visar referensjobb från Borås och närliggande orter så att du kan bedöma stil, materialkänsla och utförande innan du begär offert.",
     responseNote:
-      "Från Östra Frölunda planerar vi hembesök och offertunderlag i Borås med tydlig dialog om omfattning, material och tidsplan."
+      "Från Östra Frölunda planerar vi hembesök och offertunderlag i Borås med tydlig dialog om omfattning, material och tidsplan.",
+    localSearchIntro:
+      "Många som söker snickare eller snickeri i Borås vill snabbt förstå om hantverkaren kan ta hela vägen från idé och materialval till färdigt arbete. Därför visar vi tydligt vilka tjänster vi utför, hur offertprocessen går till och vilka referenser som finns i området.",
+    conversionFocus:
+      "Skicka gärna bilder, adressområde och en kort projektbeskrivning. Då kan vi snabbare bedöma omfattning, rimligt upplägg och nästa steg för offert.",
+    proofPoints: [
+      "Referensprojekt för fasadrenovering, altanbygge och uterum finns kopplade till Borås.",
+      "Borås är ett prioriterat arbetsområde från vår bas i Östra Frölunda.",
+      "Offertunderlag tas fram med tydlig dialog om material, budget och tidsplan."
+    ],
+    priorityServiceSlugs: ["altanbygge", "uterum", "fasadrenovering"]
   },
   {
     slug: "svenljunga",
     name: "Svenljunga",
     summary:
       "I Svenljunga utför vi snickeriprojekt som skapar vackra och användbara lösningar för hem och utemiljö.",
+    seoTitle: "Snickare i Svenljunga | Altan, fasad & uterum | F.Finsnickeri",
+    seoDescription:
+      "F.Finsnickeri hjälper villaägare i Svenljunga med fasadrenovering, altanbygge och uterum. Personlig planering, noggrant hantverk och kostnadsfri offert.",
     coverageNote:
       "Svenljunga ligger nära vår bas och passar väl för uppdrag där snabb dialog, personlig planering och noggrant snickeriarbete är viktigt.",
     localProof:
       "Vi arbetar med projekt som ska kännas rätt för husets uttryck och platsens förutsättningar, från fasaddetaljer till altan och uterum.",
     responseNote:
-      "Berätta var i Svenljunga projektet finns och vad du vill få gjort, så återkommer vi med nästa steg och ett upplägg för offert."
+      "Berätta var i Svenljunga projektet finns och vad du vill få gjort, så återkommer vi med nästa steg och ett upplägg för offert.",
+    localSearchIntro:
+      "För kunder i Svenljunga är närheten en praktisk fördel. Vi kan planera dialog, hembesök och offertarbete med kortare startsträcka och ett upplägg som passar både mindre snickerijobb och större projekt.",
+    conversionFocus:
+      "Beskriv vad du vill bygga eller renovera och om det finns bilder från platsen, så återkommer vi med ett konkret nästa steg.",
+    proofPoints: [
+      "Nära arbetsområde från Östra Frölunda.",
+      "Passar både altan, uterum och fasadprojekt där personlig dialog är viktig.",
+      "Lösningar anpassas efter husets uttryck, platsens förutsättningar och budget."
+    ],
+    priorityServiceSlugs: ["fasadrenovering", "altanbygge", "uterum"]
   },
   {
     slug: "goteborg",
     name: "Göteborg",
     summary: "Vi hjälper kunder i Göteborg med omnejd med professionella snickeriprojekt, från altaner till fasadrenovering.",
+    seoTitle: "Snickare i Göteborg | Altanbygge & uterum | F.Finsnickeri",
+    seoDescription:
+      "Behöver du snickare i Göteborg? F.Finsnickeri tar utvalda uppdrag inom altanbygge, uterum och fasadrenovering med tydlig planering och offert.",
     coverageNote:
       "För Göteborg med omnejd tar vi uppdrag där projektets omfattning, plats och tidsplan passar vår kapacitet och arbetssätt.",
     localProof:
       "Vi hjälper kunder som söker ett mindre, kvalitetsdrivet snickeriteam snarare än en anonym entreprenadkedja.",
     responseNote:
-      "Skicka gärna adressområde, bilder och kort projektbeskrivning för Göteborgsprojekt, så kan vi snabbt bedöma upplägg och tillgänglighet."
+      "Skicka gärna adressområde, bilder och kort projektbeskrivning för Göteborgsprojekt, så kan vi snabbt bedöma upplägg och tillgänglighet.",
+    localSearchIntro:
+      "I Göteborg med omnejd är efterfrågan tydlig på altanbygge och uterum. Vi tar de projekt där plats, omfattning och tidsplan gör att vi kan leverera med rätt kvalitet, personlig dialog och ett genomarbetat resultat.",
+    conversionFocus:
+      "För Göteborgsprojekt är adressområde, bilder och önskat tidsspann extra viktigt så att vi snabbt kan säga om uppdraget passar vår planering.",
+    proofPoints: [
+      "Extra fokus på altanbygge och uterum, eftersom de sökningarna redan syns i Search Console.",
+      "Passar kunder som vill ha ett mindre snickeriteam med tydlig dialog.",
+      "Tillgänglighet bedöms tidigt så att offertarbetet blir realistiskt."
+    ],
+    priorityServiceSlugs: ["altanbygge", "uterum", "fasadrenovering"]
   },
   {
     slug: "ulricehamn",
     name: "Ulricehamn",
     summary:
       "Vi hjälper kunder i Ulricehamn med noggrant snickeriarbete för hem, fasad, uteplats och kompletterande byggprojekt.",
+    seoTitle: "Snickare i Ulricehamn | Altan, fasad & uterum | F.Finsnickeri",
+    seoDescription:
+      "Söker du snickare i Ulricehamn? F.Finsnickeri hjälper med altan, fasad, uterum och kompletterande snickeriarbete. Kostnadsfri offert.",
     coverageNote:
       "Ulricehamn passar väl för uppdrag där du vill ha ett personligt snickeriteam som kan planera arbetet tydligt från första kontakt.",
     localProof:
       "Vi har kundomdömen från utfört arbete i Ulricehamn, vilket ger nya kunder en konkret bild av bemötande, prisbild och kvalitet.",
     responseNote:
-      "Skicka gärna bilder, adressområde och önskat tidsspann för projekt i Ulricehamn, så återkommer vi med nästa steg och offertunderlag."
+      "Skicka gärna bilder, adressområde och önskat tidsspann för projekt i Ulricehamn, så återkommer vi med nästa steg och offertunderlag.",
+    localSearchIntro:
+      "Sökningar på snickare i Ulricehamn visar att kunder ofta letar efter en trygg hantverkare för både specifika byggdelar och bredare snickeriarbete. Vi lyfter därför fram offert, referenser och tydligt arbetsupplägg redan på områdessidan.",
+    conversionFocus:
+      "Berätta om projektets storlek, om det gäller fasad, altan, uterum eller annat snickeriarbete, och bifoga gärna bilder.",
+    proofPoints: [
+      "Kundomdöme från utfört arbete i Ulricehamn finns på sajten.",
+      "Sidan samlar både snickare-intent och de viktigaste tjänsterna.",
+      "Tydlig offertprocess för projekt där omfattning och tidplan behöver bedömas."
+    ],
+    priorityServiceSlugs: ["altanbygge", "fasadrenovering", "uterum"]
   },
   {
     slug: "harryda",
     name: "Härryda",
     summary:
       "I Härryda hjälper vi villaägare med snickeriprojekt där uteplats, fasad och användbara hemmiljöer står i fokus.",
+    seoTitle: "Snickare i Härryda | Altan, uterum & fasad | F.Finsnickeri",
+    seoDescription:
+      "F.Finsnickeri hjälper villaägare i Härryda med altanbygge, uterum och fasadrenovering när projekt och tidsplan passar vår kapacitet.",
     coverageNote:
       "För Härryda tar vi uppdrag som passar vår kapacitet och där projektets omfattning gör att vi kan leverera rätt kvalitet.",
     localProof:
       "Vi har tidigare kundreferenser från uteplatsarbete i Härryda och kan visa relevant utfört arbete när du begär offert.",
     responseNote:
-      "Beskriv var i Härryda projektet finns, vad som ska göras och om det finns bilder, så kan vi snabbt bedöma upplägg och tillgänglighet."
+      "Beskriv var i Härryda projektet finns, vad som ska göras och om det finns bilder, så kan vi snabbt bedöma upplägg och tillgänglighet.",
+    localSearchIntro:
+      "För Härryda prioriterar vi snickeriprojekt där omfattning, avstånd och tidsplan gör att vi kan hålla hög kvalitet. Sidan hjälper kunden att snabbt förstå vilka uppdrag som passar och hur offertförfrågan bör skickas.",
+    conversionFocus:
+      "Skicka plats, bilder och en kort beskrivning av vad som ska göras så återkommer vi med besked om tillgänglighet.",
+    proofPoints: [
+      "Tidigare kundreferens från uteplatsarbete i Härryda.",
+      "Tydlig kapacitetsbedömning innan projektet planeras vidare.",
+      "Fokus på altan, uterum och fasad när uppdraget passar."
+    ],
+    priorityServiceSlugs: ["altanbygge", "uterum", "fasadrenovering"]
   }
 ];
 
@@ -412,6 +483,20 @@ export interface ProcessStep {
 export interface ServiceFaq {
   question: string;
   answer: string;
+}
+
+export interface ServiceAreaSeo {
+  serviceSlug: string;
+  areaSlug: string;
+  seoTitle: string;
+  seoDescription: string;
+  heroSubtitle: string;
+  intro: string;
+  useCases: string[];
+  included: string[];
+  localProof: string;
+  quoteNote: string;
+  faqs: ServiceFaq[];
 }
 
 export interface ServiceDetail {
@@ -652,6 +737,309 @@ export const serviceDetails: ServiceDetail[] = [
     iconPath: "M3 20h18M5 20V7h14v13M9 7V4h6v3"
   }
 ];
+
+export const serviceAreaSeo: ServiceAreaSeo[] = [
+  {
+    serviceSlug: "altanbygge",
+    areaSlug: "goteborg",
+    seoTitle: "Altanbygge i Göteborg | Bygga altan med offert | F.Finsnickeri",
+    seoDescription:
+      "Planerar du altanbygge i Göteborg? F.Finsnickeri bygger altaner efter hus, tomt och budget. Skicka bilder och få kostnadsfri offert.",
+    heroSubtitle:
+      "Vi hjälper kunder i Göteborg med altanbygge där planering, proportioner och tydligt offertunderlag är lika viktigt som själva hantverket.",
+    intro:
+      "När du vill bygga altan i Göteborg behöver lösningen fungera med huset, tomten, insyn, nivåer och hur ytan ska användas. Vi tar utvalda uppdrag i Göteborg med omnejd där omfattning och tidplan passar vårt arbetssätt.",
+    useCases: [
+      "Ny altan vid villa eller radhus där ytan ska användas för vardag och umgänge.",
+      "Altan som behöver anpassas efter nivåskillnader, trappor, räcken eller befintlig fasad.",
+      "Uteplats där materialval, proportioner och helhetsintryck ska kännas genomtänkt från start."
+    ],
+    included: [
+      "Genomgång av plats, önskemål, bilder och ungefärlig omfattning.",
+      "Förslag på praktiskt upplägg, materialnivå och detaljer som påverkar budget.",
+      "Bygge med fokus på stabilitet, finish och en altan som passar huset."
+    ],
+    localProof:
+      "Göteborg är ett prioriterat sökområde för altanbygge, men vi bedömer varje förfrågan efter plats, omfattning och tillgänglighet så att vi kan hålla rätt kvalitet.",
+    quoteNote:
+      "För snabb offert: skicka adressområde, ungefärlig storlek, bilder på platsen och om du vill ha räcke, trappa eller särskilda detaljer.",
+    faqs: [
+      {
+        question: "Tar ni altanbyggen i hela Göteborg?",
+        answer:
+          "Vi tar utvalda uppdrag i Göteborg med omnejd när omfattning, plats och tidsplan passar vår kapacitet. Skicka adressområde och bilder så bedömer vi snabbt nästa steg."
+      },
+      {
+        question: "Vad behöver ni för att lämna offert på altan?",
+        answer:
+          "Vi behöver helst bilder, ungefärliga mått, information om marknivå, önskat material och om altanen ska ha räcke, trappa eller anslutning mot befintlig byggnad."
+      },
+      {
+        question: "Kan ni hjälpa till med utformningen?",
+        answer:
+          "Ja, vi kan resonera kring placering, proportioner, rörelseflöde och detaljer så att altanen blir praktisk och passar husets uttryck."
+      }
+    ]
+  },
+  {
+    serviceSlug: "uterum",
+    areaSlug: "goteborg",
+    seoTitle: "Uterum i Göteborg | Planering, bygge & offert | F.Finsnickeri",
+    seoDescription:
+      "Vill du bygga uterum i Göteborg? F.Finsnickeri hjälper med planering, snickeriarbete och offert för uterum som passar huset.",
+    heroSubtitle:
+      "Vi bygger uterum i Göteborg med fokus på ljus, anslutning mot huset och en lösning som känns användbar under fler månader.",
+    intro:
+      "Ett uterum i Göteborg behöver planeras utifrån husets stil, väderläge, ljusinsläpp och hur rummet ska användas. Vi hjälper med projekt där lösningen behöver kännas mer genomarbetad än en standardprodukt.",
+    useCases: [
+      "Uterum som ska skapa en ljus övergång mellan kök, vardagsrum och trädgård.",
+      "Skyddad uteplats där tak, väggar eller kanalplast behöver samspela med huset.",
+      "Tillbyggnadskänsla där proportioner, material och detaljnivå är viktiga."
+    ],
+    included: [
+      "Genomgång av bilder, plats, befintlig fasad och önskad användning.",
+      "Rådgivning kring utformning, materialnivå och praktiska begränsningar.",
+      "Snickeriarbete med fokus på ett harmoniskt och hållbart slutresultat."
+    ],
+    localProof:
+      "Vi tar Göteborgsprojekt när förutsättningarna gör att vi kan planera arbetet tydligt och leverera med den kvalitet F.Finsnickeri står för.",
+    quoteNote:
+      "Skicka gärna bilder på fasaden och platsen där uterummet ska byggas, samt om du tänker dig enklare säsongsrum eller ett mer ombonat rum.",
+    faqs: [
+      {
+        question: "Bygger ni uterum i Göteborg med omnejd?",
+        answer:
+          "Ja, vi tar passande uterumsprojekt i Göteborg med omnejd. Vi börjar med att bedöma plats, omfattning och tillgänglig tidsplan."
+      },
+      {
+        question: "Kan ni anpassa uterummet efter huset?",
+        answer:
+          "Ja, utgångspunkten är att uterummet ska kännas naturligt mot fasad, taklinje, ljus och hur hemmet används."
+      },
+      {
+        question: "Vad påverkar priset för ett uterum?",
+        answer:
+          "Storlek, material, taklösning, anslutning mot huset, markförhållanden och hur mycket rummet ska kunna användas under året påverkar priset."
+      }
+    ]
+  },
+  {
+    serviceSlug: "fasadrenovering",
+    areaSlug: "boras",
+    seoTitle: "Fasadrenovering i Borås | Träfasad & offert | F.Finsnickeri",
+    seoDescription:
+      "Behöver du fasadrenovering i Borås? F.Finsnickeri renoverar träfasader med noggrant snickeriarbete, tydlig planering och offert.",
+    heroSubtitle:
+      "Vi hjälper villaägare i Borås med fasadrenovering där detaljer, helhetsintryck och hållbart utförande får styra arbetet.",
+    intro:
+      "Fasadrenovering i Borås handlar ofta om att lyfta husets uttryck, byta slitna trädetaljer och skapa en fasad som håller bättre över tid. Vi planerar arbetet efter husets skick, stil och budget.",
+    useCases: [
+      "Träfasad där panel, detaljer eller ytskikt börjar kännas slitna.",
+      "Villa som behöver ett tydligare helhetslyft mot entré, gata eller trädgård.",
+      "Fasaddetaljer som behöver renoveras med bättre finish och materialkänsla."
+    ],
+    included: [
+      "Genomgång av fasadens skick och vad som bör prioriteras.",
+      "Planering av material, omfattning och arbetsordning.",
+      "Snickeriarbete med fokus på rena detaljer och ett sammanhållet uttryck."
+    ],
+    localProof:
+      "Vi har fasadrelaterade referenser kopplade till Borås och närliggande orter, vilket gör sidan relevant för kunder som vill bedöma tidigare utförande.",
+    quoteNote:
+      "För offert: skicka bilder på fasaden, beskriv vad som är slitet och ange om det gäller hela fasaden eller avgränsade delar.",
+    faqs: [
+      {
+        question: "Renoverar ni träfasader i Borås?",
+        answer:
+          "Ja, vi hjälper kunder i Borås med fasadrenovering och fasaddetaljer när projektets omfattning passar vårt arbetssätt."
+      },
+      {
+        question: "Kan ni renovera delar av fasaden?",
+        answer:
+          "Ja, vi kan bedöma både mindre fasaddetaljer och större fasadprojekt. Bilder hjälper oss att ge ett mer konkret nästa steg."
+      },
+      {
+        question: "Hur börjar en fasadoffert?",
+        answer:
+          "Vi börjar med plats, bilder, ungefärlig omfattning och vad du vill uppnå med renoveringen. Därefter tar vi fram ett tydligt offertupplägg."
+      }
+    ]
+  },
+  {
+    serviceSlug: "uterum",
+    areaSlug: "boras",
+    seoTitle: "Uterum i Borås | Bygga uterum med offert | F.Finsnickeri",
+    seoDescription:
+      "Vill du bygga uterum i Borås? F.Finsnickeri hjälper med planering, snickeriarbete och offert för ljusa uterum som passar huset.",
+    heroSubtitle:
+      "Vi bygger uterum i Borås för villaägare som vill få mer ljus, längre säsong och en naturlig koppling mellan inne och ute.",
+    intro:
+      "Ett uterum i Borås ska fungera med husets fasad, trädgårdens läge och hur du vill använda rummet. Vi planerar lösningen så att den känns praktisk, vacker och rimlig utifrån budget.",
+    useCases: [
+      "Uterum för fler användbara månader vid villa eller fritidshus.",
+      "Skyddad uteplats med bättre ljus, tak och tydligare koppling till trädgården.",
+      "Uterum där proportioner och anslutning mot huset behöver kännas harmoniska."
+    ],
+    included: [
+      "Genomgång av plats, befintlig fasad och önskad funktion.",
+      "Dialog om material, ljusinsläpp, budget och byggupplägg.",
+      "Utförande med fokus på hållbarhet, finish och helhetskänsla."
+    ],
+    localProof:
+      "Borås är ett prioriterat område och vi har lokala referenser som hjälper kunden att se vilken typ av uttryck och kvalitet vi arbetar mot.",
+    quoteNote:
+      "Skicka bilder på platsen, hur uterummet ska användas och ungefärlig storlek så återkommer vi med nästa steg.",
+    faqs: [
+      {
+        question: "Utför ni uterum i Borås?",
+        answer:
+          "Ja, vi hjälper kunder i Borås med planering och byggnation av uterum när projektet passar vårt arbetsområde och vår kapacitet."
+      },
+      {
+        question: "Kan ni hjälpa med både enklare uterum och mer ombonade lösningar?",
+        answer:
+          "Ja, vi börjar med att förstå hur rummet ska användas och tar fram ett upplägg som matchar behov, plats och budget."
+      },
+      {
+        question: "Behöver jag veta exakt lösning innan kontakt?",
+        answer:
+          "Nej, det räcker ofta med bilder, ungefärlig storlek och en beskrivning av vilken känsla eller funktion du vill uppnå."
+      }
+    ]
+  },
+  {
+    serviceSlug: "altanbygge",
+    areaSlug: "boras",
+    seoTitle: "Altanbygge i Borås | Bygga altan med offert | F.Finsnickeri",
+    seoDescription:
+      "Bygga altan i Borås? F.Finsnickeri hjälper med altanbygge anpassat efter hus, tomt och budget. Kostnadsfri offert.",
+    heroSubtitle:
+      "Vi bygger altaner i Borås som skapar mer användbar utemiljö och en naturlig plats för vardag, vila och umgänge.",
+    intro:
+      "Vid altanbygge i Borås planerar vi efter husets uttryck, trädgårdens nivåer och hur du vill använda uteplatsen. Målet är en altan som känns stabil, genomtänkt och rätt för platsen.",
+    useCases: [
+      "Ny altan för matplats, loungedel eller bättre övergång till trädgården.",
+      "Uteplats med trappa, räcke eller anpassning mot befintlig fasad.",
+      "Altan där materialval och proportioner ska passa huset långsiktigt."
+    ],
+    included: [
+      "Behovsgenomgång och bedömning av platsens förutsättningar.",
+      "Rådgivning kring storlek, material, räcke, trappa och budget.",
+      "Byggnation med fokus på stabilitet, finish och praktisk användning."
+    ],
+    localProof:
+      "Vi har referensarbete för altanbygge i Borås och använder det som konkret stöd när nya kunder vill förstå stil, nivå och utförande.",
+    quoteNote:
+      "För snabbare offert: skicka bilder, ungefärliga mått och om marken är plan eller har nivåskillnader.",
+    faqs: [
+      {
+        question: "Bygger ni altaner i Borås?",
+        answer:
+          "Ja, Borås är ett av våra viktigaste arbetsområden för altanbygge och andra snickeriprojekt."
+      },
+      {
+        question: "Kan ni bygga altan efter budget?",
+        answer:
+          "Ja, vi kan resonera kring storlek, material och detaljer så att lösningen passar både platsen och budgeten."
+      },
+      {
+        question: "Vad är bra att skicka inför offert?",
+        answer:
+          "Bilder, ungefärliga mått, adressområde och en kort beskrivning av hur du vill använda altanen räcker som start."
+      }
+    ]
+  },
+  {
+    serviceSlug: "fasadrenovering",
+    areaSlug: "ulricehamn",
+    seoTitle: "Fasadrenovering i Ulricehamn | Snickare & offert | F.Finsnickeri",
+    seoDescription:
+      "F.Finsnickeri hjälper med fasadrenovering i Ulricehamn. Noggrant snickeriarbete, tydlig planering och kostnadsfri offert.",
+    heroSubtitle:
+      "Vi hjälper kunder i Ulricehamn med fasadrenovering när huset behöver ett tydligare uttryck, bättre detaljer och genomtänkt utförande.",
+    intro:
+      "För fasadrenovering i Ulricehamn börjar vi med att förstå fasadens skick, vilka delar som är viktigast och vilket resultat du vill se. Därefter planerar vi material, omfattning och offert.",
+    useCases: [
+      "Fasad eller fasaddetaljer som behöver renoveras med mer omsorg.",
+      "Villa där helhetsintrycket ska förbättras utan att tappa husets karaktär.",
+      "Projekt där kund vill ha tydlig planering innan arbetet startar."
+    ],
+    included: [
+      "Bedömning av bilder och projektets omfattning.",
+      "Planering kring material, detaljer och arbetsordning.",
+      "Noggrant snickeriarbete med fokus på hållbarhet och helhet."
+    ],
+    localProof:
+      "Vi har kundomdöme från utfört arbete i Ulricehamn, vilket stärker förtroendet för nya kunder som söker snickare i området.",
+    quoteNote:
+      "Skicka bilder på fasaden och berätta om det gäller hela huset eller avgränsade delar.",
+    faqs: [
+      {
+        question: "Tar ni fasadprojekt i Ulricehamn?",
+        answer:
+          "Ja, vi tar fasadrenovering i Ulricehamn när omfattning och tidsplan passar vår kapacitet."
+      },
+      {
+        question: "Kan ni bedöma fasaden via bilder först?",
+        answer:
+          "Ja, bilder är ett bra första steg. Vid behov går vi vidare med mer detaljerad genomgång innan offert."
+      },
+      {
+        question: "Hjälper ni med materialval?",
+        answer:
+          "Ja, vi kan diskutera material och detaljnivå så att lösningen passar husets uttryck och budget."
+      }
+    ]
+  },
+  {
+    serviceSlug: "altanbygge",
+    areaSlug: "ulricehamn",
+    seoTitle: "Altanbygge i Ulricehamn | Bygga altan | F.Finsnickeri",
+    seoDescription:
+      "Planerar du altan i Ulricehamn? F.Finsnickeri bygger altaner med tydlig planering, noggrant hantverk och kostnadsfri offert.",
+    heroSubtitle:
+      "Vi bygger altaner i Ulricehamn där uteplatsen planeras efter utsikt, trädgård, nivåer och hur du vill använda ytan.",
+    intro:
+      "Altanbygge i Ulricehamn passar ofta projekt där utsikt, tomtens form och vardagsflödet från huset behöver vägas samman. Vi hjälper dig hitta en lösning som känns både praktisk och välproportionerad.",
+    useCases: [
+      "Altan som tar vara på utsikt, kvällssol eller bättre koppling till trädgård.",
+      "Uteplats med räcke, trappa eller anpassning efter nivåskillnader.",
+      "Projekt där tydlig offert och materialdialog behövs innan beslut."
+    ],
+    included: [
+      "Första bedömning utifrån bilder, mått och önskad användning.",
+      "Planering av utförande, material och detaljer.",
+      "Byggnation med fokus på stabilitet, finish och långsiktig användning."
+    ],
+    localProof:
+      "Ulricehamn är ett tydligt sökområde för snickare och vi lyfter kundomdömen och offertprocess för att skapa förtroende tidigt.",
+    quoteNote:
+      "Skicka adressområde, bilder och ungefärlig storlek. Skriv gärna om du önskar räcke, trappa eller annan specialanpassning.",
+    faqs: [
+      {
+        question: "Bygger ni altaner i Ulricehamn?",
+        answer:
+          "Ja, vi hjälper kunder i Ulricehamn med altanbygge när projektets omfattning och tidsplan passar."
+      },
+      {
+        question: "Kan altanen anpassas efter utsikt och nivåskillnader?",
+        answer:
+          "Ja, vi planerar altanen efter platsens förutsättningar, hur den ska användas och hur den möter huset."
+      },
+      {
+        question: "Hur snabbt kan jag få återkoppling?",
+        answer:
+          "Skickar du bilder och en kort beskrivning kan vi snabbare återkomma med nästa steg och om projektet passar vår planering."
+      }
+    ]
+  }
+];
+
+export function getServiceAreaSeo(serviceSlug: string, areaSlug: string) {
+  return serviceAreaSeo.find(
+    (entry) => entry.serviceSlug === serviceSlug && entry.areaSlug === areaSlug
+  );
+}
 
 export function getServiceDetailBySlug(slug: string) {
   return serviceDetails.find((s) => s.slug === slug);

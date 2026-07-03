@@ -39,8 +39,20 @@ const matchingTestimonials = testimonials
   .slice(0, 2);
 
 const otherAreas = areas.filter((item) => !item.hasNoPage && item.slug !== area.slug);
-const pageTitle = `Snickare i ${area.name} | Altan, fasad & uterum | ${siteConfig.businessName}`;
-const pageDescription = `Behöver du snickare i ${area.name}? ${siteConfig.businessName} hjälper med fasadrenovering, altanbygge och uterum. Tydlig planering och kostnadsfri offert.`;
+const priorityServices = (area.priorityServiceSlugs ?? [])
+  .map((slug) => serviceDetails.find((service) => service.slug === slug))
+  .filter((service) => service !== undefined);
+const orderedServices = [
+  ...priorityServices,
+  ...serviceDetails.filter(
+    (service) => !priorityServices.some((priorityService) => priorityService.slug === service.slug)
+  )
+];
+const pageTitle =
+  area.seoTitle ?? `Snickare i ${area.name} | Altan, fasad & uterum | ${siteConfig.businessName}`;
+const pageDescription =
+  area.seoDescription ??
+  `Behöver du snickare i ${area.name}? ${siteConfig.businessName} hjälper med fasadrenovering, altanbygge och uterum. Tydlig planering och kostnadsfri offert.`;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -72,7 +84,8 @@ const serviceListSchema = {
   "@type": "ItemList",
   "@id": `${currentUrl}#services`,
   name: `Snickeritjänster i ${area.name}`,
-  itemListElement: serviceDetails.map((service, index) => ({
+  description: pageDescription,
+  itemListElement: orderedServices.map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
@@ -101,7 +114,7 @@ const serviceListSchema = {
     <PageHero
       eyebrow="Verksamhetsområde"
       title={`Snickare i ${area.name}`}
-      body={`${area.summary} Vi utgår från ${siteConfig.city} och planerar varje projekt med tydlig dialog, rätt materialval och fokus på ett hållbart slutresultat.`}
+      body={`${area.localSearchIntro ?? area.summary} Vi utgår från ${siteConfig.city} och planerar varje projekt med tydlig dialog, rätt materialval och fokus på ett hållbart slutresultat.`}
       bgImage="/service-about-fasad.webp"
       primaryHref="/kontakt"
       primaryLabel="Begär offert"
@@ -132,10 +145,23 @@ const serviceListSchema = {
           </article>
           <article class="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
             <h3 class="mb-3 text-lg font-bold text-slate-900">Nästa steg</h3>
-            <p class="text-sm leading-relaxed text-slate-600">{area.responseNote}</p>
+            <p class="text-sm leading-relaxed text-slate-600">{area.conversionFocus ?? area.responseNote}</p>
           </article>
         </div>
       </div>
+      {area.proofPoints && area.proofPoints.length > 0 && (
+        <div class="mt-10 rounded-2xl border border-secondary/10 bg-secondary-container/25 p-6 md:p-8">
+          <h3 class="mb-5 text-xl font-extrabold text-slate-900">Varför sidan är relevant för {area.name}</h3>
+          <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {area.proofPoints.map((point) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+                <span class="material-symbols-outlined mt-0.5 text-xl text-secondary">verified</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
 
     <section class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -145,7 +171,7 @@ const serviceListSchema = {
         body={`Välj den tjänst som passar ditt projekt. Varje sida innehåller mer information om upplägg, vanliga frågor och lokala förutsättningar i ${area.name}.`}
       />
       <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {serviceDetails.map((service) => (
+        {orderedServices.map((service) => (
           <a
             href={`/tjanster/${service.slug}/${area.slug}`}
             class="group flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-8 shadow-sm transition-all hover:border-secondary/30 hover:shadow-lg"
