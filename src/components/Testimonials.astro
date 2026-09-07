@@ -29,17 +29,22 @@ const optimizedTestimonialImages: Record<string, ImageMetadata> = {
             class="flex w-[82vw] max-w-[380px] shrink-0 flex-col rounded-3xl border border-outline-variant/10 bg-surface-container-lowest p-7 shadow-xl sm:w-[380px] md:p-8"
             aria-hidden={index >= testimonials.length ? "true" : undefined}
           >
-            <div class="mb-6 flex gap-1 text-secondary" aria-label="5 av 5 stjärnor">
-              {[1, 2, 3, 4, 5].map(() => (
-                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+            <div class="mb-6 flex gap-1 text-secondary" aria-label={`${testimonial.rating ?? 5} av 5 stjärnor`}>
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
+                  class={`material-symbols-outlined text-sm ${star <= (testimonial.rating ?? 5) ? "" : "opacity-25"}`}
+                  style={star <= (testimonial.rating ?? 5) ? "font-variation-settings: 'FILL' 1;" : "font-variation-settings: 'FILL' 0;"}
+                >
+                  star
+                </span>
               ))}
             </div>
             {testimonial.text ? (
-              <p class="mb-8 line-clamp-6 min-h-[9rem] text-secondary-dim leading-relaxed">
+              <p class="mb-8 flex-1 min-h-[8.5rem] text-secondary-dim leading-relaxed text-sm">
                 “{testimonial.text}”
               </p>
             ) : (
-              <p class="mb-8 min-h-[9rem] text-secondary-dim leading-relaxed">
+              <p class="mb-8 flex-1 min-h-[8.5rem] text-secondary-dim leading-relaxed text-sm">
                 Kundomdöme registrerat för utfört arbete.
               </p>
             )}
@@ -58,7 +63,7 @@ const optimizedTestimonialImages: Record<string, ImageMetadata> = {
     </div>
 
     <div class="mt-10 flex justify-center gap-2" aria-hidden="true">
-      {testimonials.slice(0, 5).map(() => (
+      {testimonials.slice(0, 6).map(() => (
         <span class="h-1.5 w-8 rounded-full bg-secondary-container"></span>
       ))}
     </div>

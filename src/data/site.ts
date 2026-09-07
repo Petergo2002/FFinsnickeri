@@ -63,6 +63,7 @@ export interface Testimonial {
   name: string;
   role: string;
   text: string;
+  rating?: number;
   images: string[];
 }
 
@@ -428,45 +429,73 @@ export const projectCases: ProjectCase[] = [
 export const testimonials: Testimonial[] = [
   {
     name: "Kerstin",
-    role: "Review · 15 maj 2025 · Nytt virke på liten altan",
-    text: "Noggrant och fantastiskt fint utförande - supernöjd! En pålitlig och proffsig hantverkare!",
+    role: "Review · 15 maj 2025 · Hedlundsgatan, Göteborg · Nytt virke på altan",
+    text: "Noggrant och fantastiskt fint utförande – supernöjd! En pålitlig och proffsig hantverkare!",
+    rating: 5,
     images: ["/reference-altan-dark-house.jpg", "/reference-altan-evening.jpg"]
   },
   {
-    name: "Ireen",
-    role: "Review · 24 november 2024 · Sätta upp gipsskivor i sluttande innertak i Ulricehamn",
-    text: "Ferenc var både punktlig, hade ett bra bemötande och bra pris. Han höll schemat som vi kommit överens om och jobbet höll god kvalitet. Jag kommer att anlita honom fler gånger.",
-    images: ["/service-about-fasad.webp", "/6143762d4d2345a2251cc83d.webp"]
+    name: "Jan Gudmundsson",
+    role: "Rekommendationsbrev · Partille, Göteborg · Fasad & Vindskivor",
+    text: "Vi har anlitat firma F.Finsnickeri, Östra Frölunda, för byte och målning av träpanel på fasad södersida, samt byte av vindskivor och metallbleck på bägge sidor av huset samt på garage. Arbetet är proffsigt och noggrant utfört, samt snabbt och på utsatt tid varje dag. Daglig diskussion och fortlöpande bra tips och råd angående vad som behöver åtgärdas har gjort att huset och garage nu känns som helt nytt! Jag vill ge dem de allra varmaste och bästa rekommendationer.",
+    rating: 5,
+    images: ["/reference-fasad-white-outbuilding.jpg", "/service-about-fasad.webp"]
   },
   {
-    name: "Gunnar",
-    role: "Review · 5 augusti 2024 · Byte av kanalplasttak på uteplats i Härryda",
-    text: "",
+    name: "Carina",
+    role: "Review · 18 aug 2025 · Hällingsjö, Härryda · Snickeriarbete",
+    text: "Väldigt nöjd med det utförda arbetet. Professionellt utfört, snabb och pålitlig. Är så glad att det gick att fixa så snabbt. Kommer anlitas igen.",
+    rating: 5,
     images: ["/service-about-uterum.webp", "/service-ref-new.webp"]
   },
   {
+    name: "Bekim",
+    role: "Review · 3 aug 2025 · Tvååker, Varberg · Altanbygge",
+    text: "Väldigt nöjd med det utförda arbetet. Kommunikationen var bra, arbetet påbörjades och avslutades som överenskommet. De jobbar rent och har öga för detalj. Vi kommer använda dem igen för altanen som ska byggas nästa år!",
+    rating: 5,
+    images: ["/altan.webp", "/reference-altan-dark-house.jpg"]
+  },
+  {
+    name: "Ireen",
+    role: "Review · 25 nov 2024 · Hökerum, Ulricehamn · Gipsskivor & Innertak",
+    text: "Ferenc var både punktlig, hade ett bra bemötande och bra pris. Han höll schemat som vi kommit överens om och jobbet höll god kvalitet. Jag kommer att anlita honom fler gånger.",
+    rating: 5,
+    images: ["/service-about-fasad.webp", "/6143762d4d2345a2251cc83d.webp"]
+  },
+  {
     name: "Mats",
-    role: "Review · 2 juli 2024 · Riva redskapsbod och ersätta med ny i Göteborg",
+    role: "Review · 3 jul 2024 · Göteborg · Riva redskapsbod och ersätta med ny",
     text: "Arbetade metodiskt och grundligt och var öppen för synpunkter under hela bygget. Hög kompetens. Är mycket nöjd.",
+    rating: 4,
     images: ["/reference-fasad-white-outbuilding.jpg", "/614374637ac319ed0e56d8fc.webp"]
   },
   {
     name: "Pierre Vettese",
-    role: "Review from Google · 5/5 · 4 years ago",
-    text: "Positive: Professionalism, Punctuality, Quality, Responsiveness, Value. … More",
+    role: "Review från Google · 5/5",
+    text: "Positive: Professionalism, Punctuality, Quality, Responsiveness, Value.",
+    rating: 5,
     images: ["/614375647ac319ed0e56d905.webp", "/614374637ac319ed0e56d8fc.webp"]
   },
   {
     name: "Renáta Mezei",
-    role: "Review from Google · 5/5 · 2 years ago",
+    role: "Review från Google · 5/5",
     text: "En mycket professionell och trevlig upplevelse. Resultatet blev över förväntan.",
+    rating: 5,
     images: ["/6143762d4d2345a2251cc83d.webp", "/709d06fbbb16a3cd3e6b4d68fcf7094e40095ae8.webp"]
   },
   {
     name: "Enikő Mezei",
-    role: "Review from Google · 5/5 · 4 years ago",
+    role: "Review från Google · 5/5",
     text: "Rekommenderas varmt för alla snickeriprojekt. Hög kvalitet och bra pålitlighet.",
+    rating: 5,
     images: ["/altan.webp", "/614374637ac319ed0e56d8fc.webp"]
+  },
+  {
+    name: "Gunnar",
+    role: "Review · 5 aug 2024 · Härryda · Byte av kanalplasttak på uteplats",
+    text: "",
+    rating: 5,
+    images: ["/service-about-uterum.webp", "/service-ref-new.webp"]
   }
 ];
 
